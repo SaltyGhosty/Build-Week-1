@@ -100,3 +100,21 @@ let timerId = null;
    - handleTimeUp() per il tempo scaduto
    - advance() per andare alla domanda successiva o ai risultati
 */
+
+function render() {
+  const app = document.getElementById("app");
+}
+
+function renderWelcome(container) {
+  container.innerHtml = 
+  <div class= 'welcome'>
+    <h1>Benvenuto al tuo esame!</h1>
+    <p>Una serie di 10 domande sul mondo dell'informatica e del web.</p>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <button type="click">Invia!</button>
+  </div>
+};

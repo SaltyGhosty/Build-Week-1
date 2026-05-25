@@ -100,12 +100,20 @@ let timerId = null;
    - handleTimeUp() per il tempo scaduto
    - advance() per andare alla domanda successiva o ai risultati
 */
-
 function render() {
   const app = document.getElementById("app");
- 
-    renderWelcome(app); 
- }
+  switch (currentScreen) {
+    case "welcome":
+      renderWelcome(app);
+      break;
+    case "quiz":
+      renderQuiz(app);
+      break;
+    case "results":
+      renderResults(app);
+      break;
+  }
+}
 
 function renderWelcome(container) {
   container.innerHTML = `
@@ -122,6 +130,16 @@ function renderWelcome(container) {
       <button type="button" id="start-btn">Inizia</button>
     </div>
   `;
+  document.getElementById("btn-start").addEventListener("click", startQuiz);
 }
 
+render();
+
+
+function startQuiz() {
+  currentScreen = "quiz";
+  currentQuestion = 0;
+  score = 0;
+  render();
+}
 render();

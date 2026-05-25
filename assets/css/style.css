@@ -35,6 +35,50 @@ body {
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
 }
 
+.welcome {
+  background: #ffffff;
+  border-radius: 16px;
+  max-width: 720px;
+  width: 100%;
+
+}
+
+h1 {
+  display: inline-block;
+  vertical-align: center;
+  padding: 0 20px 25px 0;
+
+
+
+}
+
+p {
+  font-weight: 100;
+  font-size: 13px;
+  font-size: 16px;
+  padding: 0 0 20px;
+}
+
+ul {
+  padding: 0 0 10px 17px;
+  font-weight: 100;
+}
+
+ul li {
+  padding: 2px;
+}
+
+button {
+  margin-top: 20px; 
+  padding: 14px 28px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #1B2845;
+  color: white;
+
+
+}
+
 /* Aggiungi qui le tue regole CSS per:
    - .welcome (titolo, intro, button Inizia)
    - .quiz (counter, timer, domanda, button risposta, classi correct/wrong)

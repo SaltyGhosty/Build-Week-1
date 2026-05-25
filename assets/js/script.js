@@ -103,18 +103,25 @@ let timerId = null;
 
 function render() {
   const app = document.getElementById("app");
-}
+ 
+    renderWelcome(app); 
+ }
 
 function renderWelcome(container) {
-  container.innerHtml = 
-  <div class= 'welcome'>
-    <h1>Benvenuto al tuo esame!</h1>
-    <p>Una serie di 10 domande sul mondo dell'informatica e del web.</p>
-    <ul>
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
-    <button type="click">Invia!</button>
-  </div>
-};
+  container.innerHTML = `
+    <div class="welcome">
+      <h1>Benvenuto al tuo esame!</h1>
+      <p>Una serie di 10 domande sul mondo dell'informatica e del web. Per ogni domanda hai 20 secondi di tempo.</p>
+      
+      <ul>
+        <li>Ogni domanda è a tempo e può ricevere una sola risposta.</li>
+        <li>Una volta cliccata una risposta, la domanda è chiusa.</li>
+        <li>Il quiz dura circa 3 minuti</li>
+      </ul>
+      
+      <button type="button" id="start-btn">Inizia</button>
+    </div>
+  `;
+}
+
+render();

@@ -74,8 +74,10 @@ button {
   cursor: pointer;
   background-color: #1B2845;
   color: white;
+}
 
-
+#start-btn:hover {
+  background-color: #2c3a5e;
 }
 
 /* Aggiungi qui le tue regole CSS per:
@@ -83,3 +85,47 @@ button {
   - .quiz (counter, timer, domanda, button risposta, classi correct/wrong)
   - .results (percentuale, barre orizzontali, verdetto promosso/bocciato, restart)
 */
+.quiz {
+  background: #ffffff;
+  border-radius: 16px;
+  max-width: 720px;
+  width: 100%;
+}
+
+.question-timer {
+  transform: translateX(-20px);
+  transform: translateY(-150px);
+  font-size: 20px;
+  font-weight: bold;
+  background-color: yellow;
+  padding:10px;
+  border-radius: 20px;
+  float: right;
+  text-align: right;
+}
+.question-counter {
+  float: left;
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.quiz-header {
+  color: #1b2845;
+}
+
+.question-text {
+  clear: both;
+  margin-bottom: 15px;
+}
+
+.answer-btn {
+  background-color: #ffffff;
+  color: #1b2845;
+  font-size: 1.2em;
+  margin-top: 8px;
+}
+
+.answer-btn:hover {
+  background-color: #1b2845; 
+  color: #ffffff;
+}

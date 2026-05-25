@@ -144,18 +144,6 @@ function startQuiz() {
   startTimer();
 }
 
-let startTime = 20;
-
-const timer = setInterval(() => {
-  if (startTime <= 0) {
-    clearInterval(timer);
-    console.log("Tempo Scaduto");
-  } else {
-    console.log(startTime);
-    startTime--;
-  }
-}, 1000);
-
 function renderQuiz(container) {
   const domanda = QUESTIONS[currentQuestion];
   const risposte = [domanda.correct_answer, ...domanda.incorrect_answers];
@@ -164,7 +152,6 @@ function renderQuiz(container) {
     <div class='quiz'>
       <div class='quiz-header'>
         <span class='question-counter'>Domanda ${currentQuestion} / ${TOTAL_QUESTIONS}</span>
-          <span class='question-timer'>${TIMER_DURATION}</span>
       </div>
       <h2 class='question-text'>${domanda.question}</h2>
       <div class="answers">
@@ -173,25 +160,31 @@ function renderQuiz(container) {
     </div>
 
 `;
-
-document.querySelectorAll('.answer-btn').forEach((btn) => {
-  btn.addEventListener('click') => {
-    return ${domanda.correct_answer};
-  });
-};
-
-function startTimer() {
-  if (timerId) clearInterval(timerId);
-  let timeLeft = TIMER_DURATION;
-document.getElementsByClassName(".question-timer").textContent = timeLeft;
-
-  timerId = setInterval(() => {
-    timeLeft--;
-  })
 }
 
-function stopTimer() {}
+// document.querySelectorAll('.answer-btn').forEach((btn) => {
+//   btn.addEventListener('click') => {
+//     return ${domanda.correct_answer};
+//   });
+// };
 
+function startTimer() {
+  const timerElement = document.createElement("span");
+  timerElement.className = "question-timer";
+  app.appendChild(timerElement);
 
+  let timeLeft = 20;
 
-render();
+  timerElement.textContent = timeLeft;
+
+  const timerId = setInterval(() => {
+    timeLeft--;
+
+    timerElement.textContent = timeLeft + "s";
+
+    if (timeLeft <= 0) {
+      clearInterval(timerId);
+      timerElement.textContent = "Tempo Scaduto";
+    }
+  }, 1000);
+}

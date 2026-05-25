@@ -80,15 +80,16 @@ const QUESTIONS = [
 
 /* Costanti del quiz */
 const TOTAL_QUESTIONS = QUESTIONS.length;
-const PASS_THRESHOLD = 60;     // percentuale minima per "Promosso"
-const FEEDBACK_DELAY = 1500;   // ms di attesa dopo risposta prima di avanzare
-const TIMER_DURATION = 20;     // secondi per ogni domanda
+const PASS_THRESHOLD = 60; // percentuale minima per "Promosso"
+const FEEDBACK_DELAY = 1500; // ms di attesa dopo risposta prima di avanzare
+const TIMER_DURATION = 20; // secondi per ogni domanda
 
 /* Stato globale */
 let currentScreen = "welcome"; // "welcome" | "quiz" | "results"
 let currentQuestion = 0;
 let score = 0;
 let timerId = null;
+let timerValue = TIMER_DURATION;
 
 /* SCRIVI QUI LE TUE FUNZIONI:
    - render() che chiama renderWelcome / renderQuiz / renderResults in base a currentScreen
@@ -130,16 +131,67 @@ function renderWelcome(container) {
       <button type="button" id="start-btn">Inizia</button>
     </div>
   `;
-  document.getElementById("btn-start").addEventListener("click", startQuiz);
+  document.getElementById("start-btn").addEventListener("click", startQuiz);
 }
 
 render();
-
 
 function startQuiz() {
   currentScreen = "quiz";
   currentQuestion = 0;
   score = 0;
   render();
+  startTimer();
 }
+
+let startTime = 20;
+
+const timer = setInterval(() => {
+  if (startTime <= 0) {
+    clearInterval(timer);
+    console.log("Tempo Scaduto");
+  } else {
+    console.log(startTime);
+    startTime--;
+  }
+}, 1000);
+
+function renderQuiz(container) {
+  const domanda = QUESTIONS[currentQuestion];
+  const risposte = [domanda.correct_answer, ...domanda.incorrect_answers];
+  risposte.sort(() => Math.random() * 2);
+  container.innerHTML = `
+    <div class='quiz'>
+      <div class='quiz-header'>
+        <span class='question-counter'>Domanda ${currentQuestion} / ${TOTAL_QUESTIONS}</span>
+          <span class='question-timer'>${TIMER_DURATION}</span>
+      </div>
+      <h2 class='question-text'>${domanda.question}</h2>
+      <div class="answers">
+        <button class="answer-btn" type="button">${domanda.correct_answer}</button>
+      </div>
+    </div>
+
+`;
+
+document.querySelectorAll('.answer-btn').forEach((btn) => {
+  btn.addEventListener('click') => {
+    return ${domanda.correct_answer};
+  });
+};
+
+function startTimer() {
+  if (timerId) clearInterval(timerId);
+  let timeLeft = TIMER_DURATION;
+document.getElementsByClassName(".question-timer").textContent = timeLeft;
+
+  timerId = setInterval(() => {
+    timeLeft--;
+  })
+}
+
+function stopTimer() {}
+
+
+
 render();

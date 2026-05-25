@@ -119,7 +119,7 @@ function render() {
 function renderWelcome(container) {
   container.innerHTML = `
     <div class="welcome">
-      <h1>Benvenuto al tuo esame!</h1>
+      <h1>Benvenuto al tuo esame</h1>
       <p>Una serie di 10 domande sul mondo dell'informatica e del web. Per ogni domanda hai 20 secondi di tempo.</p>
       
       <ul>
@@ -141,7 +141,7 @@ function startQuiz() {
   currentQuestion = 0;
   score = 0;
   render();
-  startTimer();
+  setTimeout(startTimer, 0);
 }
 
 function renderQuiz(container) {
@@ -155,8 +155,14 @@ function renderQuiz(container) {
       </div>
       <h2 class='question-text'>${domanda.question}</h2>
       <div class="answers">
-        <button class="answer-btn" type="button">${domanda.correct_answer}</button>
-      </div>
+        <button class="answer-btn" type="button">${risposte}</button>
+        </div>
+         <div class="answers">
+        <button class="answer-btn" type="button">${risposte}</button>
+        </div>
+         <div class="answers">
+        <button class="answer-btn" type="button">${risposte}</button>
+        </div>
     </div>
 
 `;
@@ -175,7 +181,7 @@ function startTimer() {
 
   let timeLeft = 20;
 
-  timerElement.textContent = timeLeft;
+  timerElement.textContent = timeLeft + 's';
 
   const timerId = setInterval(() => {
     timeLeft--;

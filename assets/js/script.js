@@ -167,6 +167,7 @@ function renderQuiz(container) {
   startTimer();
 }
 
+
 function startTimer() {
   /* (G) Reset del timer */
   const timerElement = document.getElementById("timer-display");
@@ -195,6 +196,7 @@ function startTimer() {
     }
   }, 1000);
 }
+
 
 /* (G) Verifica se la risposta è corretta aggiornando il punteggio*/
 function handleAnswer(answer) {

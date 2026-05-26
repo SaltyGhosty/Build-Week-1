@@ -119,7 +119,7 @@ function render() {
 function renderWelcome(container) {
   container.innerHTML = `
     <div class="welcome">
-      <h1>Benvenuto al tuo esame!</h1>
+      <h1>Benvenuto al tuo esame</h1>
       <p>Una serie di 10 domande sul mondo dell'informatica e del web. Per ogni domanda hai 20 secondi di tempo.</p>
       
       <ul>
@@ -134,57 +134,101 @@ function renderWelcome(container) {
   document.getElementById("start-btn").addEventListener("click", startQuiz);
 }
 
-render();
-
 function startQuiz() {
   currentScreen = "quiz";
   currentQuestion = 0;
   score = 0;
   render();
-  startTimer();
 }
 
 function renderQuiz(container) {
   const domanda = QUESTIONS[currentQuestion];
-  const risposte = [domanda.correct_answer, ...domanda.incorrect_answers];
-  risposte.sort(() => Math.random() * 2);
+  const risposte = [domanda.correct_answer, ...domanda.incorrect_answers].sort(() => Math.random() - 0.5);
+  
   container.innerHTML = `
     <div class='quiz'>
       <div class='quiz-header'>
-        <span class='question-counter'>Domanda ${currentQuestion} / ${TOTAL_QUESTIONS}</span>
+        <span class='question-counter'>Domanda ${currentQuestion + 1} / ${TOTAL_QUESTIONS}</span>
+        <span class='question-timer' id='timer-display'>20s</span>
       </div>
       <h2 class='question-text'>${domanda.question}</h2>
-      <div class="answers">
-        <button class="answer-btn" type="button">${domanda.correct_answer}</button>
+      <div class="answers-grid">
+        ${risposte.map(ans => `<button class="answer-btn" type="button">${ans}</button>`).join('')}
       </div>
     </div>
-
-`;
+  `;
+  /* (G) Abilita il click per ogni risposta */
+  document.querySelectorAll('.answer-btn').forEach((btn) => {
+    btn.addEventListener('click', () => handleAnswer(btn.innerText));
+  });
+  startTimer();
 }
 
-// document.querySelectorAll('.answer-btn').forEach((btn) => {
-//   btn.addEventListener('click') => {
-//     return ${domanda.correct_answer};
-//   });
-// };
-
 function startTimer() {
-  const timerElement = document.createElement("span");
-  timerElement.className = "question-timer";
-  app.appendChild(timerElement);
+  /* (G) Reset del timer */
+  const timerElement = document.getElementById("timer-display");
+  timerValue = TIMER_DURATION;
+  
+  /* (G) Reset colore timer all'inizio di ogni domanda */
+  timerElement.classList.remove('timer-red');
+  
+  if (timerId) clearInterval(timerId); /* G) Reset del timer precedente e avvia uno nuovo */
 
-  let timeLeft = 20;
+  timerId = setInterval(() => {
+    timerValue--;
+    timerElement.textContent = timerValue + 's';
 
-  timerElement.textContent = timeLeft;
+    /* (G) Cambio colore in rosso se mancano 5 secondi o meno */
+    if (timerValue <= 5) {
+        timerElement.classList.add('timer-red');
+    }
 
-  const timerId = setInterval(() => {
-    timeLeft--;
-
-    timerElement.textContent = timeLeft + "s";
-
-    if (timeLeft <= 0) {
+    if (timerValue <= 0) {
       clearInterval(timerId);
-      timerElement.textContent = "Tempo Scaduto";
+      handleAnswer(null);
     }
   }, 1000);
 }
+
+/* (G) Verifica se la risposta è corretta aggiornando il punteggio*/
+function handleAnswer(answer) {
+  clearInterval(timerId);
+  if (answer === QUESTIONS[currentQuestion].correct_answer) {
+    score++;
+  }
+  advance();
+}
+
+/* (G) Funzione per passare alla prossima domanda gestendo l'avanzamento logico del quiz */
+function advance() {
+  currentQuestion++;
+  if (currentQuestion >= TOTAL_QUESTIONS) {
+    currentScreen = "results";
+  } else {
+    currentScreen = "quiz";
+  }
+  render();
+}
+
+/* (G) Genera la schermata di riepilogo con il punteggio e gestisce il riavvio del quiz */
+function renderResults(container) {
+  const percentage = (score / TOTAL_QUESTIONS) * 100;
+  const isPassed = percentage >= PASS_THRESHOLD;
+  
+  container.innerHTML = `
+    <div class="results">
+      <h1>Risultati</h1>
+      <p>Hai risposto correttamente a <strong>${score}</strong> su ${TOTAL_QUESTIONS} domande.</p>
+      <h2>${isPassed ? "Promosso!" : "Bocciato"}</h2>
+      <p>Percentuale: ${percentage}%</p>
+      <button type="button" id="restart-btn">Ricomincia</button>
+    </div>
+  `;
+  
+  document.getElementById("restart-btn").addEventListener("click", () => {
+    currentScreen = "welcome";
+    render();
+  });
+}
+
+render();

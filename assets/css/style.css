@@ -143,8 +143,8 @@ button {
 /* (G) Griglia risposte */
 .answers-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
+  grid-template-columns: 1fr;
+  gap: px;
   width: 100%;
   margin-top: 20px;
 }
@@ -166,6 +166,7 @@ button {
 .question-timer.timer-red {
   border-color: red;
   color: red;
+  background-color: #dc354668;
 }
 
 /*RESULTS*/
@@ -212,6 +213,7 @@ button {
   background-color: #f0efef;
   margin: 0 auto;
   overflow: hidden;
+  
 }
 
 .progressBarT {

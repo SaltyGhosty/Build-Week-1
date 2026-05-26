@@ -226,10 +226,10 @@ function handleAnswer(button, answer) {
   answerLocked = true;
   stopTimer();
 
-const correctAnswer = QUESTIONS[currentQuestion].correct_answer;
-if (answer === QUESTIONS[currentQuestion].correct_answer) {
+  const correctAnswer = QUESTIONS[currentQuestion].correct_answer;
+  if (answer === QUESTIONS[currentQuestion].correct_answer) {
     button.classList.add('correct');
-      
+
     score++;
   } else {
     button.classList.add('wrong');
@@ -238,13 +238,13 @@ if (answer === QUESTIONS[currentQuestion].correct_answer) {
         btn.classList.add('correct');
       }
     });
-  } 
-    document.querySelectorAll('.answer-btn').forEach((btn) => {
-      btn.disabled = true;
-    });
-  setTimeout(() => 
-    { advance(); 
-    }, FEEDBACK_DELAY);
+  }
+  document.querySelectorAll('.answer-btn').forEach((btn) => {
+    btn.disabled = true;
+  });
+  setTimeout(() => {
+    advance();
+  }, FEEDBACK_DELAY);
 }
 
 /* (G) Funzione per passare alla prossima domanda gestendo l'avanzamento logico del quiz */
@@ -263,7 +263,7 @@ function renderResults(container) {
   const percentage = (score / TOTAL_QUESTIONS) * 100;
   const isPassed = percentage >= PASS_THRESHOLD;
 
-  /*percentuali due barre*/
+  /* percentuali due barre */
   const wrongAnswer = TOTAL_QUESTIONS - score;
   const incorrectPercentage = (wrongAnswer / TOTAL_QUESTIONS) * 100;
 
@@ -274,32 +274,38 @@ function renderResults(container) {
 
       <h2 class="titoloPercentuale">${percentage}%</h2>
       
-      <h2 class="${isPassed ? 'testo-promosso' : 'testo-bocciato'}">${isPassed ? "Promosso!" : "Bocciato"}</h2>
-
+      <h2 class="${isPassed ? 'testo-promosso' : 'testo-bocciato'}">
+        ${isPassed ? "Promosso!" : "Bocciato"}
+      </h2>
+      
       <div class="primaBarra">
-        <div>Corrette</div>
+        <div style="float: left;">Corrette</div>
         <div>
           <div class="progressBarC">
-            <div class="progressBarT" style="width: ${percentage}%">
+            <div class="progressBarT" style="width: ${percentage}%"></div>
+          </div>
         </div>
         <div>${score}/${TOTAL_QUESTIONS}</div>
       </div>
+      
       <div class="primaBarra">
-        <div>Sbagliate</div>
+        <div style="float: left;">Sbagliate</div>
         <div>
           <div class="progressBarC">
-            <div class="progressBarF" style="width: ${incorrectPercentage}%">
+            <div class="progressBarF" style="width: ${incorrectPercentage}%"></div>
+          </div>
         </div>
-        <div>${score}/${TOTAL_QUESTIONS}</div>
+        <div>${wrongAnswer}/${TOTAL_QUESTIONS}</div>
       </div>
+      
       <button type="button" id="restart-btn">Ricomincia</button>
     </div>
   `;
 
+  // Listener per il bottone di riavvio
   document.getElementById("restart-btn").addEventListener("click", () => {
     currentScreen = "welcome";
     render();
   });
 }
-
 render();

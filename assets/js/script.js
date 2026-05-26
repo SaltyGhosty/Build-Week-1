@@ -270,9 +270,9 @@ function renderResults(container) {
   container.innerHTML = `
     <div class="results">
       <h1>Risultati</h1>
-      <p>Hai risposto correttamente a <strong>${score}</strong> su ${TOTAL_QUESTIONS} domande.</p>
+      <p>Hai completato il quiz.</p>
 
-      <h2>${percentage}%</h2>
+      <h2">${percentage}%</h2>
       
       <h2>${isPassed ? "Promosso!" : "Bocciato"}</h2>
       

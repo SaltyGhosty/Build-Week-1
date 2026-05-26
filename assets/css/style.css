@@ -87,23 +87,12 @@ button {
   max-width: 720px;
   width: 100%;
 }
-/*
-.question-timer {
-  transform: translateX(-20px);
-  transform: translateY(-150px);
-  font-size: 20px;
-  font-weight: bold;
-  background-color: yellow;
-  padding:10px;
-  border-radius: 20px;
-  float: right;
-  text-align: right;
-} */
+
 .question-counter {
   float: left;
   text-align: left;
   margin-bottom: 15px;
-  color: #9497A2;
+  color: #65697a;
 }
 
 /* (G) Allinea contatore a sinistra e timer a destra */

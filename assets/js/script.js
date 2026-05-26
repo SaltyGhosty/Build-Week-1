@@ -272,10 +272,10 @@ function renderResults(container) {
       <h1>Risultati</h1>
       <p>Hai completato il quiz.</p>
 
-      <h2">${percentage}%</h2>
+      <h2 class="titoloPercentuale">${percentage}%</h2>
       
-      <h2>${isPassed ? "Promosso!" : "Bocciato"}</h2>
-      
+      <h2 class="${isPassed ? 'testo-promosso' : 'testo-bocciato'}">${isPassed ? "Promosso!" : "Bocciato"}</h2>
+
       <div class="primaBarra">
         <div>Corrette</div>
         <div>

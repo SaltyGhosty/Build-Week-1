@@ -164,9 +164,18 @@ button {
   color: red;
 }
 /*RESULTS*/
+
 .results{
 text-align: center;
 }
+
+.titoloPercentuale {
+font-size: 4em;
+font-weight: bold;
+color: #1b2845;
+margin-bottom: 15px;
+}
+
 
 
 .progressBarC {

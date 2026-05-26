@@ -230,9 +230,8 @@ function renderResults(container) {
   container.innerHTML = `
     <div class="results">
       <h1>Risultati</h1>
-      <p>Hai risposto correttamente a <strong>${score}</strong> su ${TOTAL_QUESTIONS} domande.</p>
-      <h2>${isPassed ? "Promosso!" : "Bocciato"}</h2>
-      <p>Percentuale: ${percentage}%</p>
+      <p>Hai completato il quiz</p>
+      <h2 class="titoloPercentuale">${percentage}%</h2><h3>${isPassed ? "Promosso!" : "Bocciato"}</h3>
       <div class="primaBarra">
         <div>Corrette</div>
         <div>

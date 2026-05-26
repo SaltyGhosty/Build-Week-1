@@ -91,7 +91,7 @@ button {
   max-width: 720px;
   width: 100%;
 }
-
+/*
 .question-timer {
   transform: translateX(-20px);
   transform: translateY(-150px);
@@ -102,15 +102,19 @@ button {
   border-radius: 20px;
   float: right;
   text-align: right;
-}
+} */
 .question-counter {
   float: left;
   text-align: left;
   margin-bottom: 15px;
 }
 
+/* (G) Allinea contatore a sinistra e timer a destra */
 .quiz-header {
-  color: #1b2845;
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 20px;
 }
 
 .question-text {
@@ -128,4 +132,32 @@ button {
 .answer-btn:hover {
   background-color: #1b2845; 
   color: #ffffff;
+}
+
+/* (G) Griglia risposte */
+.answers-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* (G) Stile base del timer */
+.question-timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border: 3px solid #ccc; 
+  border-radius: 50%;    
+  background-color: transparent;
+  outline: none;          
+}
+
+/* (G) Cambia l'aspetto del timer in rosso quando il tempo sta per scadere (attivato da JS)*/
+.question-timer.timer-red {
+  border-color: red;
+  color: red;
 }

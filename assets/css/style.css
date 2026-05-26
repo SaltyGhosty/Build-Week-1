@@ -131,6 +131,20 @@ button {
   color: #ffffff;
 }
 
+.answer-btn.correct {
+  background-color: #409559;
+  color:  #ffffff;
+}
+
+.answer-btn:disabled {
+  cursor: not-allowed;
+}
+
+.answer-btn.wrong {
+  background-color: #B33437;
+  color: #ffffff;
+}
+
 #restart-btn:hover {
   background-color: #2c3a5e;
 }

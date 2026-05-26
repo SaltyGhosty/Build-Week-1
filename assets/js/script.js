@@ -90,6 +90,7 @@ let currentQuestion = 0;
 let score = 0;
 let timerId = null;
 let timerValue = TIMER_DURATION;
+let answerLocked = false;
 
 /* SCRIVI QUI LE TUE FUNZIONI:
    - render() che chiama renderWelcome / renderQuiz / renderResults in base a currentScreen
@@ -159,10 +160,10 @@ function renderQuiz(container) {
       </div>
     </div>
   `;
-
+  answerLocked = false;
   /* (G) Abilita il click per ogni risposta */
   document.querySelectorAll(".answer-btn").forEach((btn) => {
-    btn.addEventListener("click", () => handleAnswer(btn.innerText));
+    btn.addEventListener("click", (e) => handleAnswer(e.target, btn.innerText));
   });
   startTimer();
 }
@@ -192,19 +193,58 @@ function startTimer() {
 
     if (timerValue <= 0) {
       clearInterval(timerId);
-      handleAnswer(null);
+      handleTimeUp();
     }
   }, 1000);
 }
 
+function stopTimer() {
+  if (timerId) {
+    clearInterval(timerId);
+    timerId = null;
+  }
+}
+
+function handleTimeUp() {
+  if (answerLocked) return;
+  answerLocked = true;
+  stopTimer();
+
+  const correctAnswer = QUESTIONS[currentQuestion].correct_answer;
+  document.querySelectorAll('.answer-btn').forEach((btn) => {
+    btn.disabled = true;
+    if (btn.innerText === correctAnswer) {
+      btn.classList.add('correct');
+    }
+  });
+  setTimeout(() => advance(), FEEDBACK_DELAY);
+}
 
 /* (G) Verifica se la risposta è corretta aggiornando il punteggio*/
-function handleAnswer(answer) {
-  clearInterval(timerId);
-  if (answer === QUESTIONS[currentQuestion].correct_answer) {
+function handleAnswer(button, answer) {
+  if (answerLocked) return;
+  answerLocked = true;
+  stopTimer();
+
+const correctAnswer = QUESTIONS[currentQuestion].correct_answer;
+if (answer === QUESTIONS[currentQuestion].correct_answer) {
+    button.classList.add('correct');
+      
     score++;
-  }
-  advance();
+  } else {
+    button.classList.add('wrong');
+    document.querySelectorAll('.answer-btn').forEach((btn) => {
+      if (btn.innerText === QUESTIONS[currentQuestion].correct_answer) {
+        btn.classList.add('correct');
+      }
+    });
+  } 
+    document.querySelectorAll('.answer-btn').forEach((btn) => {
+      btn.disabled = true;
+    });
+  setTimeout(() => 
+    { advance(); 
+    }, FEEDBACK_DELAY);
 }
 
 /* (G) Funzione per passare alla prossima domanda gestendo l'avanzamento logico del quiz */
@@ -231,8 +271,11 @@ function renderResults(container) {
     <div class="results">
       <h1>Risultati</h1>
       <p>Hai risposto correttamente a <strong>${score}</strong> su ${TOTAL_QUESTIONS} domande.</p>
+
+      <h2>${percentage}%</h2>
+      
       <h2>${isPassed ? "Promosso!" : "Bocciato"}</h2>
-      <p>Percentuale: ${percentage}%</p>
+      
       <div class="primaBarra">
         <div>Corrette</div>
         <div>

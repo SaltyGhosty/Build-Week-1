@@ -143,8 +143,10 @@ function startQuiz() {
 
 function renderQuiz(container) {
   const domanda = QUESTIONS[currentQuestion];
-  const risposte = [domanda.correct_answer, ...domanda.incorrect_answers].sort(() => Math.random() - 0.5);
-  
+  const risposte = [domanda.correct_answer, ...domanda.incorrect_answers].sort(
+    () => Math.random() - 0.5,
+  );
+
   container.innerHTML = `
     <div class='quiz'>
       <div class='quiz-header'>
@@ -153,13 +155,14 @@ function renderQuiz(container) {
       </div>
       <h2 class='question-text'>${domanda.question}</h2>
       <div class="answers-grid">
-        ${risposte.map(ans => `<button class="answer-btn" type="button">${ans}</button>`).join('')}
+        ${risposte.map((ans) => `<button class="answer-btn" type="button">${ans}</button>`).join("")}
       </div>
     </div>
   `;
+
   /* (G) Abilita il click per ogni risposta */
-  document.querySelectorAll('.answer-btn').forEach((btn) => {
-    btn.addEventListener('click', () => handleAnswer(btn.innerText));
+  document.querySelectorAll(".answer-btn").forEach((btn) => {
+    btn.addEventListener("click", () => handleAnswer(btn.innerText));
   });
   startTimer();
 }
@@ -168,19 +171,22 @@ function startTimer() {
   /* (G) Reset del timer */
   const timerElement = document.getElementById("timer-display");
   timerValue = TIMER_DURATION;
-  
+
   /* (G) Reset colore timer all'inizio di ogni domanda */
-  timerElement.classList.remove('timer-red');
-  
-  if (timerId) clearInterval(timerId); /* G) Reset del timer precedente e avvia uno nuovo */
+  timerElement.classList.remove("timer-red");
+
+  if (timerId)
+    clearInterval(
+      timerId,
+    ); /* G) Reset del timer precedente e avvia uno nuovo */
 
   timerId = setInterval(() => {
     timerValue--;
-    timerElement.textContent = timerValue + 's';
+    timerElement.textContent = timerValue + "s";
 
     /* (G) Cambio colore in rosso se mancano 5 secondi o meno */
     if (timerValue <= 5) {
-        timerElement.classList.add('timer-red');
+      timerElement.classList.add("timer-red");
     }
 
     if (timerValue <= 0) {
@@ -214,17 +220,37 @@ function advance() {
 function renderResults(container) {
   const percentage = (score / TOTAL_QUESTIONS) * 100;
   const isPassed = percentage >= PASS_THRESHOLD;
-  
+
+  /*percentuali due barre*/
+  const wrongAnswer = TOTAL_QUESTIONS - score;
+  const incorrectPercentage = (wrongAnswer / TOTAL_QUESTIONS) * 100;
+
   container.innerHTML = `
     <div class="results">
       <h1>Risultati</h1>
       <p>Hai risposto correttamente a <strong>${score}</strong> su ${TOTAL_QUESTIONS} domande.</p>
       <h2>${isPassed ? "Promosso!" : "Bocciato"}</h2>
       <p>Percentuale: ${percentage}%</p>
+      <div class="primaBarra">
+        <div>Corrette</div>
+        <div>
+          <div class="progressBarC">
+            <div class="progressBarT" style="width: ${percentage}%">
+        </div>
+        <div>${score}/${TOTAL_QUESTIONS}</div>
+      </div>
+      <div class="primaBarra">
+        <div>Sbagliate</div>
+        <div>
+          <div class="progressBarC">
+            <div class="progressBarF" style="width: ${incorrectPercentage}%">
+        </div>
+        <div>${score}/${TOTAL_QUESTIONS}</div>
+      </div>
       <button type="button" id="restart-btn">Ricomincia</button>
     </div>
   `;
-  
+
   document.getElementById("restart-btn").addEventListener("click", () => {
     currentScreen = "welcome";
     render();

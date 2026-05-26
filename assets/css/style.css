@@ -40,15 +40,11 @@ body {
   border-radius: 16px;
   max-width: 720px;
   width: 100%;
-
 }
 
 h1 {
   display: inline-block;
   padding: 0 20px 25px 0;
-
-
-
 }
 
 p {
@@ -68,11 +64,11 @@ ul li {
 }
 
 button {
-  margin-top: 20px; 
+  margin-top: 20px;
   padding: 14px 28px;
   border-radius: 10px;
   cursor: pointer;
-  background-color: #1B2845;
+  background-color: #1b2845;
   color: white;
 }
 
@@ -111,9 +107,9 @@ button {
 
 /* (G) Allinea contatore a sinistra e timer a destra */
 .quiz-header {
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
 }
 
@@ -130,7 +126,7 @@ button {
 }
 
 .answer-btn:hover {
-  background-color: #1b2845; 
+  background-color: #1b2845;
   color: #ffffff;
 }
 
@@ -150,14 +146,40 @@ button {
   justify-content: center;
   width: 50px;
   height: 50px;
-  border: 3px solid #ccc; 
-  border-radius: 50%;    
+  border: 3px solid #ccc;
+  border-radius: 50%;
   background-color: transparent;
-  outline: none;          
+  outline: none;
 }
 
 /* (G) Cambia l'aspetto del timer in rosso quando il tempo sta per scadere (attivato da JS)*/
 .question-timer.timer-red {
   border-color: red;
   color: red;
+}
+/*RESULTS*/
+.results{
+text-align: center;
+}
+
+
+.progressBarC {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  height: 16px;
+  background-color: #f0efef;
+  margin: 0 auto;
+}
+
+.progressBarT {
+  background-color: green;
+  height: 100%;
+  border-radius: 12px;
+}
+
+.progressBarF {
+  background-color: red;
+  height: 100%;
+  border-radius: 12px;
 }

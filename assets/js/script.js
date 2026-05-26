@@ -191,48 +191,6 @@ function startTimer() {
   }, 1000);
 }
 
-/* (G) Verifica se la risposta è corretta aggiornando il punteggio*/
-function handleAnswer(answer) {
-  clearInterval(timerId);
-  if (answer === QUESTIONS[currentQuestion].correct_answer) {
-    score++;
-  }
-  advance();
-}
-
-/* (G) Funzione per passare alla prossima domanda gestendo l'avanzamento logico del quiz */
-function advance() {
-  currentQuestion++;
-  if (currentQuestion >= TOTAL_QUESTIONS) {
-    currentScreen = "results";
-  } else {
-    currentScreen = "quiz";
-  }
-  render();
-}
-
-/* (G) Genera la schermata di riepilogo con il punteggio e gestisce il riavvio del quiz */
-function renderResults(container) {
-  const percentage = (score / TOTAL_QUESTIONS) * 100;
-  const isPassed = percentage >= PASS_THRESHOLD;
-  
-  container.innerHTML = `
-    <div class="results">
-      <h1>Risultati</h1>
-      <p>Hai risposto correttamente a <strong>${score}</strong> su ${TOTAL_QUESTIONS} domande.</p>
-      <h2>${isPassed ? "Promosso!" : "Bocciato"}</h2>
-      <p>Percentuale: ${percentage}%</p>
-      <button type="button" id="restart-btn">Ricomincia</button>
-    </div>
-  `;
-  
-  document.getElementById("restart-btn").addEventListener("click", () => {
-    currentScreen = "welcome";
-    render();
-  });
-}
-
-render();
 
 /* (G) Verifica se la risposta è corretta aggiornando il punteggio*/
 function handleAnswer(answer) {

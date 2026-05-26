@@ -304,5 +304,7 @@ function renderResults(container) {
     currentScreen = "welcome";
     render();
   });
+
 }
+
 render();

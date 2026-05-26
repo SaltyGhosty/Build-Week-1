@@ -164,6 +164,7 @@ function renderQuiz(container) {
   startTimer();
 }
 
+
 function startTimer() {
   /* (G) Reset del timer */
   const timerElement = document.getElementById("timer-display");
@@ -264,7 +265,7 @@ function renderResults(container) {
       <p>Hai risposto correttamente a <strong>${score}</strong> su ${TOTAL_QUESTIONS} domande.</p>
       <h2>${isPassed ? "Promosso!" : "Bocciato"}</h2>
       <p>Percentuale: ${percentage}%</p>
-      <button type="button" id="restart-btn">Ricomincia</button>
+      <button type="button" class="restart-btn" id="restart-btn">Ricomincia</button>
     </div>
   `;
   

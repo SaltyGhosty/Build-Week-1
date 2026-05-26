@@ -1,0 +1,303 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #1b1535 url("assets/img/bg.jpg") center / cover no-repeat fixed;
+  color: #1b2845;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+}
+
+.brand {
+  width: 100%;
+  max-width: 720px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.brand-logo {
+  height: 36px;
+}
+
+#app {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 720px;
+  width: 100%;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+
+.welcome {
+  background: #ffffff;
+  border-radius: 16px;
+  max-width: 720px;
+  width: 100%;
+}
+
+h1 {
+  display: inline-block;
+  padding: 0 20px 25px 0;
+}
+
+p {
+  font-size: 16px;
+  padding: 0 0 20px;
+  color: #1B2845;
+}
+
+ul {
+  padding: 0 0 10px 17px;
+  font-weight: 100;
+  color: #65697a;
+}
+
+ul li {
+  padding: 2px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 14px 28px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #1b2845;
+  color: white;
+}
+
+#start-btn:hover {
+  background-color: #2c3a5e;
+}
+
+/* Aggiungi qui le tue regole CSS per:
+  - .welcome (titolo, intro, button Inizia)
+  - .quiz (counter, timer, domanda, button risposta, classi correct/wrong)
+  - .results (percentuale, barre orizzontali, verdetto promosso/bocciato, restart)
+*/
+
+.answer-btn.correct {
+  background-color: #2ecc71 !important;
+  color: white !important;
+  animation: pulse-correct 0.4s ease-in-out;
+
+} @keyframes pulse-correct {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.answer-btn.wrong {
+  background-color: #e74c3c !important;
+  color:white !important;
+  animation: shake-wrong 0.4s ease-in-out;
+}
+
+@keyframes shake-wrong {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  20%,
+  60% {
+    transform: translateX(-8px);
+  }
+
+  40%,
+  80% {
+    transform: translateX(8px);
+  }
+
+}
+
+
+
+.quiz {
+  background: #ffffff;
+  border-radius: 16px;
+  max-width: 720px;
+  width: 100%;
+}
+
+.question-counter {
+  float: left;
+  text-align: left;
+  margin-bottom: 15px;
+  color: #65697a;
+}
+
+/* (G) Allinea contatore a sinistra e timer a destra */
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.question-text {
+  clear: both;
+  margin-bottom: 15px;
+}
+
+.answer-btn {
+  background-color: #ffffff;
+  color: #1b2845;
+  font-size: 1.2em;
+  margin-top: 8px;
+}
+
+.answer-btn:hover {
+  background-color: #1b2845;
+  color: #ffffff;
+}
+
+.answer-btn.correct {
+  background-color: #409559;
+  color: #ffffff;
+}
+
+.answer-btn:disabled {
+  cursor: not-allowed;
+}
+
+.answer-btn.wrong {
+  background-color: #B33437;
+  color: #ffffff;
+}
+
+#restart-btn:hover {
+  background-color: #2c3a5e;
+}
+
+
+/* (G) Griglia risposte */
+.answers-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* (G) Stile base del timer */
+.question-timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border: 3px solid #ccc;
+  border-radius: 50%;
+  background-color: transparent;
+  outline: none;
+  
+}
+
+/* (G) Cambia l'aspetto del timer in rosso quando il tempo sta per scadere (attivato da JS)*/
+.question-timer.timer-red {
+  border-color: red;
+  color: red;
+  background-color: #dc354668;
+}
+
+/*RESULTS*/
+
+.results {
+  text-align: center;
+}
+
+.titoloResults {
+  margin: 0 0 0 19px;
+  font-size: 36px;
+}
+
+
+.testo-promosso {
+  color: #409559;
+  background-color: #eeffcd;
+  border-radius: 20%;
+  border-radius: 5px;
+  font-size: 20px;
+  padding: 5px;
+  margin: 10px 0 50px 0;
+}
+
+.testo-bocciato {
+  color: red;
+  background-color: #ff9a9a;
+  border-radius: 5px;
+  font-size: 20px;
+  padding: 5px;
+  margin: 10px 0 50px 0;
+
+
+}
+
+.titoloPercentuale {
+  font-size: 4em;
+  font-weight: bold;
+  color: #1b2845;
+  margin-bottom: 50px;
+}
+
+
+
+.progressBarC {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  min-width: 500px;
+  height: 16px;
+  background-color: #f0efef;
+  margin: 0 auto 15px 28px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.progressBarD {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  min-width: 500px;
+  height: 16px;
+  background-color: #f0efef;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.progressBarT {
+  background-color: green;
+  height: 100%;
+  border-radius: 12px;
+}
+
+.progressBarF {
+  background-color: red;
+  height: 100%;
+  border-radius: 12px;
+}
+
+.resultBar {
+  display: flex;
+}
+
+.numeriBarra {
+  font-weight: bold;
+}
+

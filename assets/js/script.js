@@ -91,6 +91,7 @@ let score = 0;
 let timerId = null;
 let timerValue = TIMER_DURATION;
 let answerLocked = false;
+let shuffledQuestions = [];
 
 /* SCRIVI QUI LE TUE FUNZIONI:
    - render() che chiama renderWelcome / renderQuiz / renderResults in base a currentScreen
@@ -139,11 +140,12 @@ function startQuiz() {
   currentScreen = "quiz";
   currentQuestion = 0;
   score = 0;
+  shuffledQuestions = [...QUESTIONS].sort(() => Math.random() - 0.5);
   render();
 }
 
 function renderQuiz(container) {
-  const domanda = QUESTIONS[currentQuestion];
+  const domanda = shuffledQuestions[currentQuestion];
   const risposte = [domanda.correct_answer, ...domanda.incorrect_answers].sort(
     () => Math.random() - 0.5,
   );
@@ -210,7 +212,7 @@ function handleTimeUp() {
   answerLocked = true;
   stopTimer();
 
-  const correctAnswer = QUESTIONS[currentQuestion].correct_answer;
+  const correctAnswer = shuffledQuestions[currentQuestion].correct_answer;
   document.querySelectorAll('.answer-btn').forEach((btn) => {
     btn.disabled = true;
     if (btn.innerText === correctAnswer) {
@@ -226,15 +228,15 @@ function handleAnswer(button, answer) {
   answerLocked = true;
   stopTimer();
 
-  const correctAnswer = QUESTIONS[currentQuestion].correct_answer;
-  if (answer === QUESTIONS[currentQuestion].correct_answer) {
+  const correctAnswer = shuffledQuestions[currentQuestion].correct_answer;
+  if (answer === correctAnswer) {
     button.classList.add('correct');
 
     score++;
   } else {
     button.classList.add('wrong');
     document.querySelectorAll('.answer-btn').forEach((btn) => {
-      if (btn.innerText === QUESTIONS[currentQuestion].correct_answer) {
+      if (btn.innerText === correctAnswer) {
         btn.classList.add('correct');
       }
     });
@@ -269,7 +271,7 @@ function renderResults(container) {
 
   container.innerHTML = `
     <div class="results">
-      <h1>Risultati</h1>
+      <h1 class="titoloResults">Risultati</h1>
       <p>Hai completato il quiz.</p>
 
       <h2 class="titoloPercentuale">${percentage}%</h2>
@@ -278,26 +280,21 @@ function renderResults(container) {
         ${isPassed ? "Promosso!" : "Bocciato"}
       </h2>
       
-      <div class="primaBarra">
-        <div style="float: left;">Corrette</div>
-        <div>
-          <div class="progressBarC">
-            <div class="progressBarT" style="width: ${percentage}%"></div>
-          </div>
+      <div class="resultBar">
+        <div style="float: left;font-weight: bold;color:#666A7B;">Corrette </div>
+        <div class="progressBarC">
+          <div class="progressBarT" style="width: ${percentage}%"></div>
         </div>
-        <div>${score}/${TOTAL_QUESTIONS}</div>
+        <div class="numeriBarra">${score}/${TOTAL_QUESTIONS}</div>
       </div>
       
-      <div class="primaBarra">
-        <div style="float: left;">Sbagliate</div>
-        <div>
-          <div class="progressBarC">
-            <div class="progressBarF" style="width: ${incorrectPercentage}%"></div>
-          </div>
+      <div class="resultBar">
+        <div style="float: left;font-weight: bold;color:#666A7B;">Sbagliate</div>
+        <div class="progressBarD">
+          <div class="progressBarF" style="width: ${incorrectPercentage}%"></div>
         </div>
-        <div>${wrongAnswer}/${TOTAL_QUESTIONS}</div>
+        <div class="numeriBarra">${wrongAnswer}/${TOTAL_QUESTIONS}</div>
       </div>
-      
       <button type="button" id="restart-btn">Ricomincia</button>
     </div>
   `;

@@ -48,10 +48,9 @@ h1 {
 }
 
 p {
-  font-weight: 100;
-  font-size: 13px;
+  font-size: 16px;
   padding: 0 0 20px;
-  color: #65697a;
+  color: #1B2845;
 }
 
 ul {
@@ -82,6 +81,7 @@ button {
   - .quiz (counter, timer, domanda, button risposta, classi correct/wrong)
   - .results (percentuale, barre orizzontali, verdetto promosso/bocciato, restart)
 */
+
 .quiz {
   background: #ffffff;
   border-radius: 16px;
@@ -175,23 +175,29 @@ button {
   text-align: center;
 }
 
+.titoloResults{
+margin: 0 0 0 10px;
+font-size: 36px;
+}
+
+
 .testo-promosso {
   color: #409559;
   background-color: #eeffcd;
   border-radius: 20%;
   border-radius: 5px;
-  font-size: 15px;
+  font-size: 20px;
   padding: 5px;
-  margin: 10px 0 10px 0;
+  margin: 10px 0 50px 0;
 }
 
 .testo-bocciato {
   color: red;
   background-color: #ff9a9a;
   border-radius: 5px;
-  font-size: 15px;
+  font-size: 20px;
   padding: 5px;
-  margin: 10px 0 10px 0;
+  margin: 10px 0 50px 0;
 
 
 }
@@ -200,20 +206,30 @@ button {
   font-size: 4em;
   font-weight: bold;
   color: #1b2845;
-  margin-bottom: 15px;
+  margin-bottom: 50px;
 }
 
 
 
 .progressBarC {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    min-width: 500px;
+    height: 16px;
+    background-color: #f0efef;
+    margin: 0 auto 15px 28px;
+    overflow: hidden;
+}
+.progressBarD {
   display: block;
   width: 100%;
-  max-width: 300px;
+  max-width: 500px;
+  min-width: 500px;
   height: 16px;
   background-color: #f0efef;
   margin: 0 auto;
   overflow: hidden;
-  
 }
 
 .progressBarT {
@@ -226,4 +242,12 @@ button {
   background-color: red;
   height: 100%;
   border-radius: 12px;
+}
+
+.resultBar {
+  display: flex;
+}
+
+.numeriBarra {
+  font-weight: bold;
 }

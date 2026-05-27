@@ -32,18 +32,22 @@ for (let i = 0; i < SEGNACORRETTI_COUNT; i++) {
 
 const QUESTIONS = [
   {
-    question: "Cliccare su 'Accetto i termini' senza leggerli è la mia firma su un patto col diavolo digitale in cambio di comodità.",
+    question:
+      "Cliccare su 'Accetto i termini' senza leggerli è la mia firma su un patto col diavolo digitale in cambio di comodità.",
     correct_answer: "Vero",
     incorrect_answers: ["Falso"],
   },
   {
-    question: "Il sistema che mi obbliga a cambiare password ogni mese lo fa esclusivamente perché ha a cuore la mia salute mentale e il mio benessere interiore.",
+    question:
+      "Il sistema che mi obbliga a cambiare password ogni mese lo fa esclusivamente perché ha a cuore la mia salute mentale e il mio benessere interiore.",
     correct_answer: "Falso",
     incorrect_answers: ["Vero"],
   },
   {
-    question: "Il sito ti avvisa: 'La password deve essere diversa dalla precedente'. Qual è la tua strategia di sopravvivenza?",
-    correct_answer: "Cambio il carattere speciale da ! a ? (la domanda riflette il mio stato d'animo).",
+    question:
+      "Il sito ti avvisa: 'La password deve essere diversa dalla precedente'. Qual è la tua strategia di sopravvivenza?",
+    correct_answer:
+      "Cambio il carattere speciale da ! a ? (la domanda riflette il mio stato d'animo).",
     incorrect_answers: [
       "Aggiungo un '1' alla fine della precedente.",
       "Inizio a guardare oggetti nella stanza in cerca di ispirazione filosofica.",
@@ -51,7 +55,8 @@ const QUESTIONS = [
     ],
   },
   {
-    question: "Hai cliccato su 'Password dimenticata'. Qual è lo stadio emotivo predominante?",
+    question:
+      "Hai cliccato su 'Password dimenticata'. Qual è lo stadio emotivo predominante?",
     correct_answer: "Negazione ('L'avevo scritta da qualche parte, lo giuro!')",
     incorrect_answers: [
       "Rabbia ('Ma come, l'ho creata ieri!')",
@@ -60,8 +65,10 @@ const QUESTIONS = [
     ],
   },
   {
-    question: "Domanda di sicurezza: 'Nome del tuo primo animale domestico'. Perché questa domanda è un attacco alla tua privacy?",
-    correct_answer: "Perché il mio criceto non aveva un nome, era solo 'Criceto', e questo mi fa sentire poco originale.",
+    question:
+      "Domanda di sicurezza: 'Nome del tuo primo animale domestico'. Perché questa domanda è un attacco alla tua privacy?",
+    correct_answer:
+      "Perché il mio criceto non aveva un nome, era solo 'Criceto', e questo mi fa sentire poco originale.",
     incorrect_answers: [
       "Perché rivela dettagli intimi della mia infanzia che non voglio condividere con un server.",
       "Perché la risposta è troppo ovvia per gli hacker e troppo complessa per il mio Io attuale.",
@@ -69,8 +76,10 @@ const QUESTIONS = [
     ],
   },
   {
-    question: "L'autenticazione a due fattori ti chiede un codice inviato sul telefono. Il telefono è in un'altra stanza. Cosa fai?",
-    correct_answer: "Cerchi di indovinare il codice (probabilità di successo: 0,0001%).",
+    question:
+      "L'autenticazione a due fattori ti chiede un codice inviato sul telefono. Il telefono è in un'altra stanza. Cosa fai?",
+    correct_answer:
+      "Cerchi di indovinare il codice (probabilità di successo: 0,0001%).",
     incorrect_answers: [
       "Ti alzi e lo prendi, sentendoti un atleta impegnato in una maratona.",
       "Rimani seduto fissando il vuoto, rassegnato alla sconfitta digitale.",
@@ -78,8 +87,10 @@ const QUESTIONS = [
     ],
   },
   {
-    question: "Usi la stessa password per il conto in banca e per l'app delle ricette. Qual è il rischio psicologico principale?",
-    correct_answer: "Nessuno, tanto nessuno hackererebbe un conto in banca vuoto.",
+    question:
+      "Usi la stessa password per il conto in banca e per l'app delle ricette. Qual è il rischio psicologico principale?",
+    correct_answer:
+      "Nessuno, tanto nessuno hackererebbe un conto in banca vuoto.",
     incorrect_answers: [
       "Che gli hacker rubino la mia segreta ricetta del tiramisù.",
       "Che il sistema bancario mi giudichi per le mie abitudini alimentari compulsive.",
@@ -96,13 +107,16 @@ const QUESTIONS = [
     ],
   },
   {
-    question: "Il test CAPTCHA che mi chiede di identificare i semafori è stato progettato per premiare la mia intelligenza superiore rispetto alle macchine.",
+    question:
+      "Il test CAPTCHA che mi chiede di identificare i semafori è stato progettato per premiare la mia intelligenza superiore rispetto alle macchine.",
     correct_answer: "Falso",
     incorrect_answers: ["Vero"],
   },
   {
-    question: "Qual è la definizione di 'Password Perfetta' secondo la psicologia dell'Erosione dell'Io?",
-    correct_answer: "Non esiste, l'unica password perfetta è quella che non serve a nulla perché abbiamo smesso di accedere.",
+    question:
+      "Qual è la definizione di 'Password Perfetta' secondo la psicologia dell'Erosione dell'Io?",
+    correct_answer:
+      "Non esiste, l'unica password perfetta è quella che non serve a nulla perché abbiamo smesso di accedere.",
     incorrect_answers: [
       "Una che contiene il nome di un ex, perché è indelebile.",
       "Una che non ricordi, ma che il computer ricorda per te.",
@@ -125,6 +139,8 @@ let timerId = null;
 let timerValue = TIMER_DURATION;
 let answerLocked = false;
 let shuffledQuestions = [];
+let audioCtx = null;
+let audioBuffer = null;
 
 /* SCRIVI QUI LE TUE FUNZIONI:
    - render() che chiama renderWelcome / renderQuiz / renderResults in base a currentScreen
@@ -208,6 +224,50 @@ function renderQuiz(container) {
   startTimer();
 }
 
+const alarmSound = new Audio("assets/audio/biohazard-alarm.mp3");
+
+
+
+fetch("assets/audio/biohazard-alarm.mp3")
+  .then((res) => res.arrayBuffer())
+  .then((data) => {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    return audioCtx.decodeAudioData(data);
+  })
+  .then((buffer) => {
+    audioBuffer = buffer;
+  })
+  .catch((e) => console.error("Errore caricamento audio:", e));
+
+let currentSource = null;
+
+/* funzione per suono di allarme */
+function playBeep() {
+  if (!audioCtx || !audioBuffer) return;
+  if (currentSource) {
+    try {
+      currentSource.stop();
+    } catch (e) {}
+  }
+  if (audioCtx.state === "suspended") {
+    audioCtx.resume();
+  }
+  currentSource = audioCtx.createBufferSource();
+  currentSource.buffer = audioBuffer;
+  currentSource.connect(audioCtx.destination);
+  currentSource.start();
+
+}
+/* funzione che stoppa il suono di allarme */
+function stopAlarm() {
+  if (currentSource) {
+    try {
+      currentSource.stop();
+    } catch (e) {}
+    currentSource = null;
+  }
+}
+
 function startTimer() {
   const timerSvg = document.getElementById("timer-display");
   timerValue = TIMER_DURATION;
@@ -233,8 +293,9 @@ function startTimer() {
     progressCircle.style.strokeDashoffset = offset;
 
     /* (G) Cambio colore in rosso se mancano 5 secondi o meno */
-    if (timerValue <= 5) {
+    if (timerValue === 5) {
       timerSvg.classList.add("timer-red");
+      playBeep(); //funzione che fa partire il suono di allarme
     }
 
     if (timerValue <= 0) {
@@ -245,6 +306,7 @@ function startTimer() {
 }
 
 function stopTimer() {
+  stopAlarm();
   if (timerId) {
     clearInterval(timerId);
     timerId = null;
@@ -316,7 +378,7 @@ function renderResults(container) {
       <h1 class="titoloResults">Risultati</h1>
       <p>Hai completato il quiz.</p>
 
-      <h2 class="titoloPercentuale">${percentage}%</h2>
+      <h2 class="titoloPercentuale">${isPassed ? "😮‍💨" : "🥲🔫"} ${percentage}%</h2>
       
       <h2 class="${isPassed ? "testo-promosso" : "testo-bocciato"}">
         ${isPassed ? "Promosso!" : "Bocciato"}

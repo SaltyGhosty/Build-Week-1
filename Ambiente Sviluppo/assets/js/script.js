@@ -306,7 +306,11 @@ function advance() {
 }
 
 
-/* (G) Genera la schermata di riepilogo con il punteggio e gestisce il riavvio del quiz */
+/* (G) Genera la schermata di riepilogo con il punteggio e gestisce il riavvio del quiz*/
+
+
+
+
 function renderResults(container) {
   const percentage = Math.round((score / TOTAL_QUESTIONS) * 100);
   const isPassed = percentage >= PASS_THRESHOLD;
@@ -348,7 +352,7 @@ function renderResults(container) {
     <h3>Com'è andato il quiz?</h3>
     <div class="stelle" style="font-size: 24px; cursor: pointer">
      ${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => 
-      `<span onclick="vota(${n})" class="stella" style="display:inline-block; transition: 0.2s;">⭐</span>`).join('')}
+      `<span onclick="vota(${n})" class="stella" style="display:inline-block; opacity: 0.3; transition: 0.2s;">⭐</span>`).join('')}
   
       </div>
       <textarea id="commento-feedback" placeholder="Cosa possiamo migliorare?" style="margin: 15px;"></textarea>
@@ -362,6 +366,10 @@ window.vota = function(voto) {
   stelleSelezionate = voto;
   const stelle = document.querySelectorAll('.stella');
   stelle.forEach((stella, indice) => {
+   /*La logica "indice < voto": Se clicco la stella 7 (voto = 7), le stelle con indice 0,1,2,3,4,5,6 diventeranno opache (opacity 1). 
+    Le altre (indice 7,8,9) resteranno trasparenti (opacity 0.3). */
+   
+   
     stella.style.opacity = indice < voto ? "1" : "0.3";
     stella.style.transform = indice < voto ? "scale(1.2)" : "scale(1)";
   });
@@ -374,6 +382,10 @@ window.inviaFeedback = function() {
     alert("Per favore, seleziona almeno una stella per il voto");
     return;
   }
+
+ /* FEEDBACK POSITIVO: Sostituiamo tutto il modulo con un messaggio di ringraziamento
+   Questo evita che l'utente invii il feedback più volte*/
+   
   console.log("Feedback inviato:", { stelleSelezionate, commentoUtente });
   document.getElementById('modulo-feedback').innerHTML = "<h3>Grazie per il tuo feedback!</h3>";
 

@@ -16,7 +16,7 @@ body {
 }
 
 
-/* Container sengno di domanda */ 
+/* Container sengno di domanda */
 #container {
   position: fixed;
   top: 0;
@@ -30,9 +30,9 @@ body {
 }
 
 
-.segno {   
+.segno {
   opacity: 0.7;
-  display: block; 
+  display: block;
   position: fixed;
   width: 8vw;
   height: 8vw;
@@ -44,7 +44,7 @@ body {
   background-position: center;
   border-radius: 50%;
   animation: fall 1s linear infinite;
-  pointer-events: none; 
+  pointer-events: none;
   z-index: 1;
 }
 
@@ -54,6 +54,7 @@ body {
   from {
     transform: translateY(-100vh) rotate(0deg);
   }
+
   to {
     transform: translateY(140vh) rotate(360deg);
   }
@@ -69,8 +70,8 @@ body {
   max-width: 720px;
   margin-bottom: 24px;
   text-align: left;
-  position: relative; 
-  z-index: 10;        
+  position: relative;
+  z-index: 10;
 }
 
 #app {
@@ -80,8 +81,8 @@ body {
   max-width: 720px;
   width: 100%;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
-  position: relative; 
-  z-index: 10;        
+  position: relative;
+  z-index: 10;
 }
 
 .welcome {
@@ -136,7 +137,9 @@ button {
   color: white !important;
   animation: pulse-correct 0.4s ease-in-out;
 
-} @keyframes pulse-correct {
+}
+
+@keyframes pulse-correct {
   0% {
     transform: scale(1);
   }
@@ -144,6 +147,7 @@ button {
   50% {
     transform: scale(1.05);
   }
+
   100% {
     transform: scale(1);
   }
@@ -151,7 +155,7 @@ button {
 
 .answer-btn.wrong {
   background-color: #e74c3c !important;
-  color:white !important;
+  color: white !important;
   animation: shake-wrong 0.4s ease-in-out;
 }
 
@@ -221,7 +225,8 @@ button {
 }
 
 .answer-btn:disabled {
-  cursor: not-allowed;
+  /* (G) Versione popcorn del cursore */
+  cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHBhdGggZmlsbD0iI0ZGRjhFNyIgc3Ryb2tlPSIjRDJiNDhDIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTE2LDIgQzIwLDIgMjQsNiAyNCwxMCBDMjgsMTAgMzAsMTQgMjgsMTggQzMwLDIyIDI2LDI2IDIyLDI0IEMyMCwyOCAxNCwyOCAxMiwyNCBDOCwyNiA0LDIyIDYsMTggQzIsMTQgNCwxMCA4LDEwIEM4LDYgMTIsMiAxNiwyIFoiLz48cGF0aCBmaWxsPSIjRkZCMzQ3IiBkPSJNMTQsMTIgQzE2LDEwIDIwLDEyIDIwLDE0IEMxOCwxNiAxNCwxNiAxNCwxMiBaIE0xMiwxOCBDMTQsMTYgMTYsMTYgMTgsMTggQzE2LDIwIDEyLDIwIDEyLDE4IFoiLz48L3N2Zz4="), auto;
 }
 
 .answer-btn.wrong {
@@ -254,7 +259,7 @@ button {
   border-radius: 50%;
   background-color: transparent;
   outline: none;
-  
+
 }
 
 /* (G) Cambia l'aspetto del timer in rosso quando il tempo sta per scadere (attivato da JS)*/
@@ -334,12 +339,14 @@ button {
   background-color: green;
   height: 100%;
   border-radius: 12px;
+  transition: width 1.5s ease-out; /* Animazione */
 }
 
 .progressBarF {
   background-color: red;
   height: 100%;
   border-radius: 12px;
+  transition: width 1.5s ease-out; /* Animazione */
 }
 
 .resultBar {

@@ -216,7 +216,6 @@ function renderQuiz(container) {
     
   `;
 
-
   answerLocked = false;
   /* (G) Abilita il click per ogni risposta */
   document.querySelectorAll(".answer-btn").forEach((btn) => {
@@ -226,8 +225,6 @@ function renderQuiz(container) {
 }
 
 const alarmSound = new Audio("assets/audio/biohazard-alarm.mp3");
-
-
 
 fetch("assets/audio/biohazard-alarm.mp3")
   .then((res) => res.arrayBuffer())
@@ -257,7 +254,6 @@ function playBeep() {
   currentSource.buffer = audioBuffer;
   currentSource.connect(audioCtx.destination);
   currentSource.start();
-
 }
 /* funzione che stoppa il suono di allarme */
 function stopAlarm() {
@@ -367,11 +363,7 @@ function advance() {
   render();
 }
 
-
 /* (G) Genera la schermata di riepilogo con il punteggio e gestisce il riavvio del quiz*/
-
-
-
 
 function renderResults(container) {
   const percentage = Math.round((score / TOTAL_QUESTIONS) * 100);
@@ -379,14 +371,15 @@ function renderResults(container) {
   const wrongAnswer = TOTAL_QUESTIONS - score;
   const incorrectPercentage = (wrongAnswer / TOTAL_QUESTIONS) * 100;
 
-
   container.innerHTML = `
     <div class="results">
       <h1 class="titoloResults">Risultati</h1>
       <p>Hai completato il quiz.</p>
 
-      <h2 class="titoloPercentuale">${isPassed ? "😮‍💨" : "🥲🔫"} ${percentage}%</h2>
-      
+      <h2 class="titoloPercentuale">${percentage}%</h2>
+      <div class="percentuale-gif">
+      <img src="${isPassed ? "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExODhycXI5cDR2NmpyMmtucWgyZXc2YXFtbjR3dGNoNGt6N3JyNTg0ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/cbD4NSXZutjebF8cd8/giphy.gif" : "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYXRsaHBua2Jqb3h4ZGcxZnMyYWsyMGc4MmR1aGowNTFjdWNtYTEyOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/a65cl7nIak1Ns8sQYV/giphy.gif"}" alt="gif-gatto" class="gif-risultato" />
+       </div>
       <h2 class="${isPassed ? "testo-promosso" : "testo-bocciato"}">
         ${isPassed ? "Promosso!" : "Bocciato"}
       </h2>
@@ -413,46 +406,47 @@ function renderResults(container) {
     <div class="result" id="modulo-feedback" style="padding: 20px; display: flex; flex-direction: column; align-items:center;">
     <h3>Com'è andato il quiz?</h3>
     <div class="stelle" style="font-size: 24px; cursor: pointer">
-     ${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => 
-      `<span onclick="vota(${n})" class="stella" style="display:inline-block; opacity: 0.3; transition: 0.2s;">⭐</span>`).join('')}
+     ${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+       .map(
+         (n) =>
+           `<span onclick="vota(${n})" class="stella" style="display:inline-block; opacity: 0.3; transition: 0.2s;">⭐</span>`,
+       )
+       .join("")}
   
       </div>
       <textarea id="commento-feedback" placeholder="Cosa possiamo migliorare?" style="margin: 15px;"></textarea>
       <button onclick="inviaFeedback()">Invia Feedback</button>
     </div>
   `;
-  
-let stelleSelezionate = 0;
 
-window.vota = function(voto) {
-  stelleSelezionate = voto;
-  const stelle = document.querySelectorAll('.stella');
-  stelle.forEach((stella, indice) => {
-   /*La logica "indice < voto": Se clicco la stella 7 (voto = 7), le stelle con indice 0,1,2,3,4,5,6 diventeranno opache (opacity 1). 
+  let stelleSelezionate = 0;
+
+  window.vota = function (voto) {
+    stelleSelezionate = voto;
+    const stelle = document.querySelectorAll(".stella");
+    stelle.forEach((stella, indice) => {
+      /*La logica "indice < voto": Se clicco la stella 7 (voto = 7), le stelle con indice 0,1,2,3,4,5,6 diventeranno opache (opacity 1). 
     Le altre (indice 7,8,9) resteranno trasparenti (opacity 0.3). */
-   
-   
-    stella.style.opacity = indice < voto ? "1" : "0.3";
-    stella.style.transform = indice < voto ? "scale(1.2)" : "scale(1)";
-  });
-};
 
+      stella.style.opacity = indice < voto ? "1" : "0.3";
+      stella.style.transform = indice < voto ? "scale(1.2)" : "scale(1)";
+    });
+  };
 
-window.inviaFeedback = function() {
-  const commentoUtente = document.getElementById('commento-feedback').value;
-  if (stelleSelezionate === 0) {
-    alert("Per favore, seleziona almeno una stella per il voto");
-    return;
-  }
+  window.inviaFeedback = function () {
+    const commentoUtente = document.getElementById("commento-feedback").value;
+    if (stelleSelezionate === 0) {
+      alert("Per favore, seleziona almeno una stella per il voto");
+      return;
+    }
 
- /* FEEDBACK POSITIVO: Sostituiamo tutto il modulo con un messaggio di ringraziamento
+    /* FEEDBACK POSITIVO: Sostituiamo tutto il modulo con un messaggio di ringraziamento
    Questo evita che l'utente invii il feedback più volte*/
-   
-  console.log("Feedback inviato:", { stelleSelezionate, commentoUtente });
-  document.getElementById('modulo-feedback').innerHTML = "<h3>Grazie per il tuo feedback!</h3>";
 
-};
-
+    console.log("Feedback inviato:", { stelleSelezionate, commentoUtente });
+    document.getElementById("modulo-feedback").innerHTML =
+      "<h3>Grazie per il tuo feedback!</h3>";
+  };
 
   /* (G) Il browser attende 100ms per mostrare lo stato iniziale (0%), 
   così che l'animazione di riempimento sia visibile invece di apparire istantanea */

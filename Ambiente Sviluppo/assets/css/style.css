@@ -137,7 +137,7 @@ button {
 
 }
 
-}
+
 @keyframes pulse-correct {
   0% {
     transform: scale(1);
@@ -253,7 +253,7 @@ button {
   border-radius: 50%;
   background-color: transparent;
   outline: none;
-
+}
 .timer-svg {
   width: 70px;
   height: 70px;

@@ -48,7 +48,6 @@ body {
   z-index: 1;
 }
 
-
 /* Animazion segno di caduta del segno di domanda */
 @keyframes fall {
   from {
@@ -59,7 +58,6 @@ body {
     transform: translateY(140vh) rotate(360deg);
   }
 }
-
 
 .brand-logo {
   height: 36px;
@@ -100,7 +98,7 @@ h1 {
 p {
   font-size: 16px;
   padding: 0 0 20px;
-  color: #1B2845;
+  color: #1b2845;
 }
 
 ul {
@@ -139,6 +137,7 @@ button {
 
 }
 
+}
 @keyframes pulse-correct {
   0% {
     transform: scale(1);
@@ -160,7 +159,6 @@ button {
 }
 
 @keyframes shake-wrong {
-
   0%,
   100% {
     transform: translateX(0);
@@ -175,10 +173,7 @@ button {
   80% {
     transform: translateX(8px);
   }
-
 }
-
-
 
 .quiz {
   background: #ffffff;
@@ -230,14 +225,13 @@ button {
 }
 
 .answer-btn.wrong {
-  background-color: #B33437;
+  background-color: #b33437;
   color: #ffffff;
 }
 
 #restart-btn:hover {
   background-color: #2c3a5e;
 }
-
 
 /* (G) Griglia risposte */
 .answers-grid {
@@ -260,13 +254,48 @@ button {
   background-color: transparent;
   outline: none;
 
+.timer-svg {
+  width: 70px;
+  height: 70px;
+  transform: rotate(-90deg);
 }
 
-/* (G) Cambia l'aspetto del timer in rosso quando il tempo sta per scadere (attivato da JS)*/
-.question-timer.timer-red {
-  border-color: red;
-  color: red;
-  background-color: #dc354668;
+.timer-bg {
+  fill: none;
+  stroke: #e0e0e0;
+  stroke-width: 8;
+}
+
+.timer-progress {
+  fill: none;
+  stroke: #1b2845;
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+.timer-text {
+  font-size: 20px;
+  fill: #1b2845;
+  font-weight: bold;
+  transform: rotate(90deg);
+  transform-origin: center;
+}
+
+.timer-svg.timer-red .timer-progress {
+  stroke: #e74c3c;
+  fill: rgba(231, 77, 60, 0.231);;
+}
+
+.timer-svg.timer-red .timer-text {
+  fill: #e74c3c;
+  background-color: #e74c3c;
+  animation: pulse 0.5s ease infinite alternate;
+}
+
+@keyframes pulse {
+    from { transform: rotate(90deg) translate(0, 0) scale(1); }
+    to { transform: rotate(90deg) translate(0, -2px) scale(1.15); }
 }
 
 /*RESULTS*/
@@ -279,7 +308,6 @@ button {
   margin: 0 0 0 19px;
   font-size: 36px;
 }
-
 
 .testo-promosso {
   color: #409559;
@@ -298,8 +326,6 @@ button {
   font-size: 20px;
   padding: 5px;
   margin: 10px 0 50px 0;
-
-
 }
 
 .titoloPercentuale {
@@ -308,8 +334,6 @@ button {
   color: #1b2845;
   margin-bottom: 50px;
 }
-
-
 
 .progressBarC {
   display: block;

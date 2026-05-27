@@ -14,25 +14,21 @@
    - incorrect_answers: array di risposte sbagliate (string[])
 */
 
+const SEGNACORRETTI_COUNT = 100; //Quanti segni generare
+const backgroundContainer = document.getElementById("container"); //Contenitore segni
 
+for (let i = 0; i < SEGNACORRETTI_COUNT; i++) {
+  //Loop per generare i segni
+  const segno = document.createElement("div");
 
-const SEGNACORRETTI_COUNT = 100;    //Quanti segni generare
-const backgroundContainer = document.getElementById('container'); //Contenitore segni
+  segno.className = "segno";
+  segno.style.left = Math.random() * (window.innerWidth - 50) + "px";
+  segno.style.top = "-" + (Math.random() * 100 + 40) + "px";
+  segno.style.animationDelay = Math.random() * 5 + "s";
+  segno.style.animationDuration = 6 + Math.random() * 2 + "s";
 
-
-  for (let i = 0; i < SEGNACORRETTI_COUNT; i++) { //Loop per generare i segni
-    const segno = document.createElement('div');
-    
-    segno.className = 'segno'; 
-    segno.style.left = Math.random() * (window.innerWidth - 50) + 'px'; 
-    segno.style.top = '-' + (Math.random() * 100 + 40) + 'px'; 
-    segno.style.animationDelay = Math.random() * 5 + 's';  
-    segno.style.animationDuration = (6 + Math.random() * 2) + 's';  
-  
-    container.appendChild(segno);
-  }
-
-
+  container.appendChild(segno);
+}
 
 const QUESTIONS = [
   {
@@ -175,7 +171,12 @@ function renderQuiz(container) {
     <div class='quiz'>
       <div class='quiz-header'>
         <span class='question-counter'>Domanda ${currentQuestion + 1} / ${TOTAL_QUESTIONS}</span>
-        <span class='question-timer' id='timer-display'>20s</span>
+        <svg viewBox= "0 0 100 100" class="timer-svg" id= "timer-display">
+        <circle class="timer-bg" cx="50" cy="50" r="45" />
+        <circle class="timer-progress" cx="50" cy="50" r="45" 
+        stroke-dasharray="282.74" stroke-dashoffset="0" />
+        <text x="50" y="55" text-anchor="middle" class="timer-text">20s</text>
+        </svg>
       </div>
       <h2 class='question-text'>${domanda.question}</h2>
       <div class="answers-grid">
@@ -191,14 +192,17 @@ function renderQuiz(container) {
   startTimer();
 }
 
-
 function startTimer() {
-  /* (G) Reset del timer */
-  const timerElement = document.getElementById("timer-display");
+  const timerSvg = document.getElementById("timer-display");
   timerValue = TIMER_DURATION;
 
-  /* (G) Reset colore timer all'inizio di ogni domanda */
-  timerElement.classList.remove("timer-red");
+  timerSvg.classList.remove("timer-red");
+
+  const progressCircle = timerSvg.querySelector(".timer-progress");
+  const textElement = timerSvg.querySelector(".timer-text");
+  const circumference = 2 * Math.PI * 45; // 282.74
+  progressCircle.style.strokeDashoffset = "0";
+  textElement.textContent = timerValue + "s";
 
   if (timerId)
     clearInterval(
@@ -207,11 +211,14 @@ function startTimer() {
 
   timerId = setInterval(() => {
     timerValue--;
-    timerElement.textContent = timerValue + "s";
+    textElement.textContent = timerValue + "s";
+
+    const offset = circumference * (1 - timerValue / TIMER_DURATION);
+    progressCircle.style.strokeDashoffset = offset;
 
     /* (G) Cambio colore in rosso se mancano 5 secondi o meno */
     if (timerValue <= 5) {
-      timerElement.classList.add("timer-red");
+      timerSvg.classList.add("timer-red");
     }
 
     if (timerValue <= 0) {
@@ -234,10 +241,10 @@ function handleTimeUp() {
   stopTimer();
 
   const correctAnswer = shuffledQuestions[currentQuestion].correct_answer;
-  document.querySelectorAll('.answer-btn').forEach((btn) => {
+  document.querySelectorAll(".answer-btn").forEach((btn) => {
     btn.disabled = true;
     if (btn.innerText === correctAnswer) {
-      btn.classList.add('correct');
+      btn.classList.add("correct");
     }
   });
   setTimeout(() => advance(), FEEDBACK_DELAY);
@@ -251,18 +258,18 @@ function handleAnswer(button, answer) {
 
   const correctAnswer = shuffledQuestions[currentQuestion].correct_answer;
   if (answer === correctAnswer) {
-    button.classList.add('correct');
+    button.classList.add("correct");
 
     score++;
   } else {
-    button.classList.add('wrong');
-    document.querySelectorAll('.answer-btn').forEach((btn) => {
+    button.classList.add("wrong");
+    document.querySelectorAll(".answer-btn").forEach((btn) => {
       if (btn.innerText === correctAnswer) {
-        btn.classList.add('correct');
+        btn.classList.add("correct");
       }
     });
   }
-  document.querySelectorAll('.answer-btn').forEach((btn) => {
+  document.querySelectorAll(".answer-btn").forEach((btn) => {
     btn.disabled = true;
   });
   setTimeout(() => {
@@ -297,7 +304,7 @@ function renderResults(container) {
 
       <h2 class="titoloPercentuale">${percentage}%</h2>
       
-      <h2 class="${isPassed ? 'testo-promosso' : 'testo-bocciato'}">
+      <h2 class="${isPassed ? "testo-promosso" : "testo-bocciato"}">
         ${isPassed ? "Promosso!" : "Bocciato"}
       </h2>
       
@@ -325,7 +332,6 @@ function renderResults(container) {
     currentScreen = "welcome";
     render();
   });
-
 }
 
 render();

@@ -13,6 +13,27 @@
    - correct_answer: la risposta corretta (string)
    - incorrect_answers: array di risposte sbagliate (string[])
 */
+
+
+
+const SEGNACORRETTI_COUNT = 100;    //Quanti segni generare
+const backgroundContainer = document.getElementById('container'); //Contenitore segni
+
+
+  for (let i = 0; i < SEGNACORRETTI_COUNT; i++) { //Loop per generare i segni
+    const segno = document.createElement('div');
+    
+    segno.className = 'segno'; 
+    segno.style.left = Math.random() * (window.innerWidth - 50) + 'px'; 
+    segno.style.top = '-' + (Math.random() * 100 + 40) + 'px'; 
+    segno.style.animationDelay = Math.random() * 5 + 's';  
+    segno.style.animationDuration = (6 + Math.random() * 2) + 's';  
+  
+    container.appendChild(segno);
+  }
+
+
+
 const QUESTIONS = [
   {
     question: "Cosa significa l'acronimo CPU?",

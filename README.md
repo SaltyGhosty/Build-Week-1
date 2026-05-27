@@ -34,7 +34,7 @@ Progetto JS di gruppo basato su una pagina interattiva. Sviluppato utilizzando l
 
 ## ⚙️[Come funziona?](#indice)
 
-Il codice è strutturato seguendo il pattern **STATO** --> **RENDER** --> **EVENTI** garantendo scalabilità e leggibilità. Dividendpsi in: 
+Il codice è strutturato seguendo il pattern **STATO** --> **RENDER** --> **EVENTI** garantendo scalabilità e leggibilità. Dividendosi in: 
 
    1. **Lo Stato :** Nessuna funzione modifica direttamenete l' HTML senza prima aver aggiornato le variabile di stato( es. *currentScreen, score, currentQuestion*).
    2. **IL RENDERING :** La funzione centrale *render()* agisce come un vigile urbano: controlla lo stato attuale e decide quale schermata immettere nel DOM svuotando il contenitore principale *(#app)* dalla schermata precedente.

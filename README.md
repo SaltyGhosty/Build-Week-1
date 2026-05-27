@@ -43,7 +43,7 @@ Il codice è strutturato seguendo il pattern **STATO** --> **RENDER** --> **EVEN
 ## 💻[Tecnologie utilizzate...](#indice)
 
 - *HTML5 :* Struttura semantica e contenitori dinamici.
-- *CSS3 Avanzato :* Layout gestisti con **FLEXBOX** e **CSS Grid**. Uso di *@keyframes*, *@moushover* etc...
+- *CSS3 Avanzato :* Layout gestisti con **FLEXBOX** e **CSS Grid**. Uso di *@keyframes*, *@mousehover* etc...
 - *JavaScript (Es6)*
   
 #### 🙀 Esempi

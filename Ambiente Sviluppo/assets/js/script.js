@@ -197,9 +197,10 @@ function renderQuiz(container) {
       <h2 class='question-text'>${domanda.question}</h2>
       <div class="answers-grid">
         ${risposte.map((ans) => `<button class="answer-btn" type="button">${ans}</button>`).join("")}
-      </div>
-    </div>
+    
   `;
+
+
   answerLocked = false;
   /* (G) Abilita il click per ogni risposta */
   document.querySelectorAll(".answer-btn").forEach((btn) => {
@@ -304,12 +305,14 @@ function advance() {
   render();
 }
 
+
 /* (G) Genera la schermata di riepilogo con il punteggio e gestisce il riavvio del quiz */
 function renderResults(container) {
   const percentage = Math.round((score / TOTAL_QUESTIONS) * 100);
   const isPassed = percentage >= PASS_THRESHOLD;
   const wrongAnswer = TOTAL_QUESTIONS - score;
   const incorrectPercentage = (wrongAnswer / TOTAL_QUESTIONS) * 100;
+
 
   container.innerHTML = `
     <div class="results">
@@ -339,7 +342,43 @@ function renderResults(container) {
       </div>
       <button type="button" id="restart-btn">Ricomincia</button>
     </div>
+     
+    
+    <div class="result" id="modulo-feedback" style="padding: 20px; display: flex; flex-direction: column; align-items:center;">
+    <h3>Com'è andato il quiz?</h3>
+    <div class="stelle" style="font-size: 24px; cursor: pointer">
+     ${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => 
+      `<span onclick="vota(${n})" class="stella" style="display:inline-block; transition: 0.2s;">⭐</span>`).join('')}
+  
+      </div>
+      <textarea id="commento-feedback" placeholder="Cosa possiamo migliorare?" style="margin: 15px;"></textarea>
+      <button onclick="inviaFeedback()">Invia Feedback</button>
+    </div>
   `;
+  
+let stelleSelezionate = 0;
+
+window.vota = function(voto) {
+  stelleSelezionate = voto;
+  const stelle = document.querySelectorAll('.stella');
+  stelle.forEach((stella, indice) => {
+    stella.style.opacity = indice < voto ? "1" : "0.3";
+    stella.style.transform = indice < voto ? "scale(1.2)" : "scale(1)";
+  });
+};
+
+
+window.inviaFeedback = function() {
+  const commentoUtente = document.getElementById('commento-feedback').value;
+  if (stelleSelezionate === 0) {
+    alert("Per favore, seleziona almeno una stella per il voto");
+    return;
+  }
+  console.log("Feedback inviato:", { stelleSelezionate, commentoUtente });
+  document.getElementById('modulo-feedback').innerHTML = "<h3>Grazie per il tuo feedback!</h3>";
+
+};
+
 
   /* (G) Il browser attende 100ms per mostrare lo stato iniziale (0%), 
   così che l'animazione di riempimento sia visibile invece di apparire istantanea */

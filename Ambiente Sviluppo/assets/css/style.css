@@ -7,6 +7,7 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   background: #1b1535 url("assets/img/bg.jpg") center / cover no-repeat fixed;
+
   color: #1b2845;
   min-height: 100vh;
   display: flex;
@@ -14,6 +15,7 @@ body {
   align-items: center;
   padding: 24px;
 }
+
 
 
 /* Container sengno di domanda */
@@ -380,3 +382,4 @@ button {
 .numeriBarra {
   font-weight: bold;
 }
+

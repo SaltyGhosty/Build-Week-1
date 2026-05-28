@@ -443,7 +443,7 @@ function renderResults(container) {
       <button type="button" id="restart-btn">Ricomincia</button>
     </div>
      
-    <div class="result" id="modulo-feedback" style="padding: 14px; display: flex; flex-direction: column; align-items:center;">
+    <div class="result" id="modulo-feedback" style="padding: 13.5px; display: flex; flex-direction: column; align-items:center;">
     <h3>Com'è andato il quiz?</h3>
     <div class="stelle" style="font-size: 24px; cursor: pointer">
      ${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]

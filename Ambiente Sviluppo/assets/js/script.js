@@ -238,26 +238,34 @@ function renderQuiz(container) {
     () => Math.random() - 0.5,
   );
 
+
   container.innerHTML = `
-    <div class='quiz'>
-      <div class='quiz-header'>
-        <span class='question-counter'>Domanda ${currentQuestion + 1} / ${TOTAL_QUESTIONS}</span>
-        <svg viewBox= "0 0 100 100" class="timer-svg" id= "timer-display">
-        <circle class="timer-bg" cx="50" cy="50" r="45" />
-        <circle class="timer-progress" cx="50" cy="50" r="45" 
-        stroke-dasharray="282.74" stroke-dashoffset="0" />
-        <text x="50" y="55" text-anchor="middle" class="timer-text">20s</text>
-        </svg>
-      </div>
-      <h2 class='question-text'>${domanda.question}</h2>
-      <div class="answers-grid">
-        ${risposte.map((ans) => `<button class="answer-btn" type="button">${ans}</button>`).join("")}
+    <div class="quiz-fade">
+      <div class='quiz'>
+        <div class='quiz-header'>
+          <span class='question-counter'>Domanda ${currentQuestion + 1} / ${TOTAL_QUESTIONS}</span>
+          <svg viewBox= "0 0 100 100" class="timer-svg" id= "timer-display">
+            <circle class="timer-bg" cx="50" cy="50" r="45" />
+            <circle class="timer-progress" cx="50" cy="50" r="45" stroke-dasharray="282.74" stroke-dashoffset="0" />
+            <text x="50" y="55" text-anchor="middle" class="timer-text">20s</text>
+          </svg>
         </div>
+        <h2 class='question-text'>${domanda.question}</h2>
+        <div class="answers-grid">
+          ${risposte.map((ans) => `<button class="answer-btn" type="button">${ans}</button>`).join("")}
+        </div>
+      </div>
     </div>
   `;
+const wrapper = container.querySelector(".quiz-fade");
+  wrapper.classList.add("enter");
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      wrapper.classList.remove("enter");
+    });
+  });
 
   answerLocked = false;
-  /* (G) Abilita il click per ogni risposta */
   document.querySelectorAll(".answer-btn").forEach((btn) => {
     btn.addEventListener("click", (e) => handleAnswer(e.target, btn.innerText));
   });
@@ -394,6 +402,21 @@ function handleAnswer(button, answer) {
 
 /* (G) Funzione per passare alla prossima domanda gestendo l'avanzamento logico del quiz */
 function advance() {
+  const wrapper = document.querySelector(".quiz-fade");
+
+  if (wrapper) {
+    wrapper.classList.add("hidden");
+  
+    setTimeout(() => {
+      processNextStep();
+    }, 300);
+  } else {
+    processNextStep();
+  }
+}
+
+
+function processNextStep() {
   currentQuestion++;
   if (currentQuestion >= TOTAL_QUESTIONS) {
     currentScreen = "results";
@@ -532,10 +555,8 @@ stelle.forEach((stella) => {
 
     if (haScrittoQualcosa) {
       const segnoX = Math.random() < 0.5 ? -1 : 1;
-      const segnoY = Math.random() < 0.5 ? -1 : 1;
       const randomX = segnoX * (Math.floor(Math.random() * 130) + 120);
-      const randomY = segnoY * (Math.floor(Math.random() * 90) + 80);
-      btnFeedback.style.transform = `translate(${randomX}px, ${randomY}px)`;
+      btnFeedback.style.transform = `translate(${randomX}px, 0px)`;
     } else {
       btnFeedback.style.transform = "translate(0px, 0px)";
     }

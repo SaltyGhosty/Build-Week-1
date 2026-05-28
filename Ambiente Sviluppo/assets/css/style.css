@@ -400,3 +400,7 @@ button {
 .numeriBarra {
   font-weight: bold;
 }
+
+#invia-feedback-btn:hover {
+  background-color: #2c3a5e;
+}

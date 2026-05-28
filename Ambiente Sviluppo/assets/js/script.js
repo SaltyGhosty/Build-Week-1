@@ -500,6 +500,30 @@ window.inviaFeedback = function() {
     });
   });
 
+/*Animazione delle stelle quando passi sopra con il mouse (riempimento e svuotamento) */
+stelle.forEach((stella) => {
+    stella.addEventListener("mouseenter", () => {
+      const votoHover = parseInt(stella.getAttribute("data-voto"), 10);
+      stelle.forEach((s, indice) => {
+        s.style.opacity = indice < votoHover ? "1" : "0.3";
+        s.style.transform = indice < votoHover ? "scale(1.2)" : "scala(1)";
+      });
+    });
+  });
+
+  const stelleContainer = container.querySelector(".stelle");
+  stelleContainer.addEventListener("mouseleave", () => {
+    stelle.forEach((s, indice) => {
+      if (stelleSelezionate > 0) {
+        s.style.opacity = indice < stelleSelezionate ? "1" : "0.3";
+        s.style.transform = indice < stelleSelezionate ? "scale(1.2)" : "scale(1)";
+      } else {
+        s.style.opacity = "0.3";
+        s.style.transform = "scale(1)";
+      }
+    });
+  });
+
   const btnFeedback = container.querySelector("#invia-feedback-btn");
   const textareaFeedback = container.querySelector("#commento-feedback");
 

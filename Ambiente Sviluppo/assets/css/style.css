@@ -6,8 +6,7 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: #1b1535 url("assets/img/bg.jpg") center / cover no-repeat fixed;
-
+  background: linear-gradient(51deg, #500786 19%, #590985 38%, #9f187c 56%, #ab1b7a 66%, #ca2275 81%);
   color: #1b2845;
   min-height: 100vh;
   display: flex;
@@ -356,11 +355,10 @@ button {
 .progressBarC {
   display: block;
   width: 100%;
-  max-width: 500px;
-  min-width: 500px;
   height: 16px;
+  flex: 1;
   background-color: #f0efef;
-  margin: 0 auto 15px 28px;
+  margin: 0;
   overflow: hidden;
   border-radius: 12px;
 }
@@ -368,11 +366,10 @@ button {
 .progressBarD {
   display: block;
   width: 100%;
-  max-width: 500px;
-  min-width: 500px;
   height: 16px;
+  flex: 1;
   background-color: #f0efef;
-  margin: 0 auto;
+  margin: 0;
   overflow: hidden;
   border-radius: 12px;
 }
@@ -392,7 +389,11 @@ button {
 }
 
 .resultBar {
-  display: flex;
+  display: grid;
+  grid-template-columns: 90px 1fr 60px;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
 .numeriBarra {

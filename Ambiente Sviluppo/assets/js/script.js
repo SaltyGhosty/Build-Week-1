@@ -373,12 +373,15 @@ function renderResults(container) {
   const wrongAnswer = TOTAL_QUESTIONS - score;
   const incorrectPercentage = (wrongAnswer / TOTAL_QUESTIONS) * 100;
 
-  container.innerHTML = `
+ container.innerHTML = `
     <div class="results">
       <h1 class="titoloResults">Risultati</h1>
       <p>Hai completato il quiz.</p>
 
-      <h2 class="titoloPercentuale">${isPassed ? "😮‍💨" : "🥲🔫"} ${percentage}%</h2>
+      <h2 class="titoloPercentuale">${percentage}%</h2>
+      <div class="percentuale-gif">
+      <img src="${isPassed ? "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExODhycXI5cDR2NmpyMmtucWgyZXc2YXFtbjR3dGNoNGt6N3JyNTg0ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/cbD4NSXZutjebF8cd8/giphy.gif" : "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYXRsaHBua2Jqb3h4ZGcxZnMyYWsyMGc4MmR1aGowNTFjdWNtYTEyOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/a65cl7nIak1Ns8sQYV/giphy.gif"}" alt="gif-gatto" class="gif-risultato" />
+       </div>
       
       <h2 class="${isPassed ? "testo-promosso" : "testo-bocciato"}">
         ${isPassed ? "Promosso!" : "Bocciato"}
@@ -402,7 +405,7 @@ function renderResults(container) {
       <button type="button" id="restart-btn">Ricomincia</button>
     </div>
      
-    <div class="result" id="modulo-feedback" style="padding: 20px; display: flex; flex-direction: column; align-items:center;">
+    <div class="result" id="modulo-feedback" style="padding: 13.5px; display: flex; flex-direction: column; align-items:center;">
     <h3>Com'è andato il quiz?</h3>
     <div class="stelle" style="font-size: 24px; cursor: pointer">
      ${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -423,8 +426,7 @@ function renderResults(container) {
     resize: none;
     width: 320px;
     height: 100px;"></textarea>
-      <button onclick="inviaFeedback()">Invia Feedback</button>
->>>>>>> 7db5e4fab93748355dfa9e65eeb45471f41ceffe
+      <button id="invia-feedback-btn" style="transition: none; display: inline-block;">Invia Feedback</button>
     </div>
   `;
 

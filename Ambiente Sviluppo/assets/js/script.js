@@ -412,8 +412,19 @@ function renderResults(container) {
        )
        .join("")}
       </div>
+<<<<<<< HEAD
       <textarea id="commento-feedback" placeholder="Cosa possiamo migliorare?" style="margin: 15px;"></textarea>
       <button id="invia-feedback-btn" style="transition: none; display: inline-block;">Invia Feedback</button>
+=======
+      <textarea id="commento-feedback" placeholder="Cosa possiamo migliorare?" style="font-style: normal;
+    font-size: 20px;
+    margin: 15px;
+    max-width: 100%;
+    resize: none;
+    width: 320px;
+    height: 100px;"></textarea>
+      <button onclick="inviaFeedback()">Invia Feedback</button>
+>>>>>>> 7db5e4fab93748355dfa9e65eeb45471f41ceffe
     </div>
   `;
 

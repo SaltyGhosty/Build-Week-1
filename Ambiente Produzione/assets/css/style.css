@@ -7,6 +7,7 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   background: #1b1535 url("assets/img/bg.jpg") center / cover no-repeat fixed;
+
   color: #1b2845;
   min-height: 100vh;
   display: flex;
@@ -14,7 +15,6 @@ body {
   align-items: center;
   padding: 24px;
 }
-
 
 /* Container sengno di domanda */
 #container {
@@ -28,7 +28,6 @@ body {
   pointer-events: none;
   z-index: 1;
 }
-
 
 .segno {
   opacity: 0.7;
@@ -134,9 +133,7 @@ button {
   background-color: #2ecc71 !important;
   color: white !important;
   animation: pulse-correct 0.4s ease-in-out;
-
 }
-
 
 @keyframes pulse-correct {
   0% {
@@ -221,7 +218,9 @@ button {
 
 .answer-btn:disabled {
   /* (G) Versione popcorn del cursore */
-  cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHBhdGggZmlsbD0iI0ZGRjhFNyIgc3Ryb2tlPSIjRDJiNDhDIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTE2LDIgQzIwLDIgMjQsNiAyNCwxMCBDMjgsMTAgMzAsMTQgMjgsMTggQzMwLDIyIDI2LDI2IDIyLDI0IEMyMCwyOCAxNCwyOCAxMiwyNCBDOCwyNiA0LDIyIDYsMTggQzIsMTQgNCwxMCA4LDEwIEM4LDYgMTIsMiAxNiwyIFoiLz48cGF0aCBmaWxsPSIjRkZCMzQ3IiBkPSJNMTQsMTIgQzE2LDEwIDIwLDEyIDIwLDE0IEMxOCwxNiAxNCwxNiAxNCwxMiBaIE0xMiwxOCBDMTQsMTYgMTYsMTYgMTgsMTggQzE2LDIwIDEyLDIwIDEyLDE4IFoiLz48L3N2Zz4="), auto;
+  cursor:
+    url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHBhdGggZmlsbD0iI0ZGRjhFNyIgc3Ryb2tlPSIjRDJiNDhDIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTE2LDIgQzIwLDIgMjQsNiAyNCwxMCBDMjgsMTAgMzAsMTQgMjgsMTggQzMwLDIyIDI2LDI2IDIyLDI0IEMyMCwyOCAxNCwyOCAxMiwyNCBDOCwyNiA0LDIyIDYsMTggQzIsMTQgNCwxMCA4LDEwIEM4LDYgMTIsMiAxNiwyIFoiLz48cGF0aCBmaWxsPSIjRkZCMzQ3IiBkPSJNMTQsMTIgQzE2LDEwIDIwLDEyIDIwLDE0IEMxOCwxNiAxNCwxNiAxNCwxMiBaIE0xMiwxOCBDMTQsMTYgMTYsMTYgMTgsMTggQzE2LDIwIDEyLDIwIDEyLDE4IFoiLz48L3N2Zz4="),
+    auto;
 }
 
 .answer-btn.wrong {
@@ -284,7 +283,7 @@ button {
 
 .timer-svg.timer-red .timer-progress {
   stroke: #e74c3c;
-  fill: rgba(231, 77, 60, 0.231);;
+  fill: rgba(231, 77, 60, 0.231);
 }
 
 .timer-svg.timer-red .timer-text {
@@ -294,8 +293,12 @@ button {
 }
 
 @keyframes pulse {
-    from { transform: rotate(90deg) translate(0, 0) scale(1); }
-    to { transform: rotate(90deg) translate(0, -2px) scale(1.15); }
+  from {
+    transform: rotate(90deg) translate(0, 0) scale(1);
+  }
+  to {
+    transform: rotate(90deg) translate(0, -2px) scale(1.15);
+  }
 }
 
 /*RESULTS*/
@@ -333,6 +336,21 @@ button {
   font-weight: bold;
   color: #1b2845;
   margin-bottom: 50px;
+}
+
+.percentuale-gif {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.gif-risultato {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 12px;
 }
 
 .progressBarC {

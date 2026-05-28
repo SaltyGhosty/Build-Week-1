@@ -561,6 +561,7 @@ window.inviaFeedback = function() {
 
   /* (G) Il browser attende 100ms per mostrare lo stato iniziale (0%), 
   così che l'animazione di riempimento sia visibile invece di apparire istantanea */
+  
   setTimeout(() => {
     document.getElementById("bar-c").style.width = percentage + "%";
     document.getElementById("bar-f").style.width = incorrectPercentage + "%";

@@ -13,23 +13,26 @@ Progetto JS di gruppo basato su una pagina interattiva. Sviluppato utilizzando l
 
 #### L'applicazione simula e gestisce un flusso di domande a risposta multipla.
 
-### Funzionalità principale:
+### Funzionalità principali:
  
   **Generazione Dinamica:** 
    - A ogni avvio vengono pescate una serie di domande da un database locale, garantendo un' esperienza sempre diversa.
  
  **Gestione del Tempo e dei Feedback:**
 
-  - Attraverso un Timer ogni domanda avrà 20 sec ma non solo, se scade il tempo, l' applicazione mostrerà la risposta corretta, considerando la mancata risposta come errata. Feedback è dovuto al click su una risposta, poiché l'utente vede subito se ha indovinato o sbagliato, evidenziando contemporaneamente la risposta corretta.
+  - Attraverso un Timer ogni domanda avrà 20 sec ma non solo, se scade il tempo, l' applicazione mostrerà la risposta corretta, considerando la mancata risposta come errata. Il Feedback è dovuto al click su una risposta, poiché l'utente vede subito se ha indovinato o sbagliato, evidenziando contemporaneamente la risposta corretta.
 
   **Interfaccia Fluida:** 
-  - Single Page Application che gestisce all' interno di un unica pagina senza la necessità di ricaricarla 3 schermate principali (Welcome, Quiz, Results).
+  - Single Page Application che gestisce all' interno di un unica pagina, senza la necessità di essere ricaricata, 3 schermate principali (Welcome, Quiz, Results).
 
  **Visualizzazione dei Risultati:** 
-  - Schermata finale che calcola e mostra attraverso un grafico di barre ad avanzamento dinamico e delle percentuali, il risultato del test.
+  - Schermata finale che calcola e mostra, attraverso un grafico a barre ad avanzamento dinamico, e attraverso delle percentuali, il risultato del test.
 
   **Effetti visivi:** 
   - Sfondo animato che genera una pioggia di elementi decorativi.
+
+  **Effetti audio:**
+  - Traccia audio che inizia quando il timer dei secondi scende a 5 e finisce quando scadono o alla selezione di una risposta
 
 
 ## ⚙️[Come funziona?](#indice)

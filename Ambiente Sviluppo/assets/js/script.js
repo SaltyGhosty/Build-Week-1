@@ -17,19 +17,20 @@
 const SEGNACORRETTI_COUNT = 100; //Quanti segni generare
 const backgroundContainer = document.getElementById("container"); //Contenitore segni
 
-for (let i = 0; i < SEGNACORRETTI_COUNT; i++) {
-  //Loop per generare i segni
-  const segno = document.createElement("div");
+if (backgroundContainer) {
+  for (let i = 0; i < SEGNACORRETTI_COUNT; i++) {
+    //Loop per generare i segni
+    const segno = document.createElement("div");
 
-  segno.className = "segno";
-  segno.style.left = Math.random() * (window.innerWidth - 50) + "px";
-  segno.style.top = "-" + (Math.random() * 100 + 40) + "px";
-  segno.style.animationDelay = Math.random() * 5 + "s";
-  segno.style.animationDuration = 6 + Math.random() * 2 + "s";
+    segno.className = "segno";
+    segno.style.left = Math.random() * (window.innerWidth - 50) + "px";
+    segno.style.top = "-" + (Math.random() * 100 + 40) + "px";
+    segno.style.animationDelay = Math.random() * 5 + "s";
+    segno.style.animationDuration = 6 + Math.random() * 2 + "s";
 
-  container.appendChild(segno);
+    backgroundContainer.appendChild(segno);
+  }
 }
-
 const QUESTIONS = [
   {
     question:
@@ -213,9 +214,9 @@ function renderQuiz(container) {
       <h2 class='question-text'>${domanda.question}</h2>
       <div class="answers-grid">
         ${risposte.map((ans) => `<button class="answer-btn" type="button">${ans}</button>`).join("")}
-    
+        </div>
+    </div>
   `;
-
 
   answerLocked = false;
   /* (G) Abilita il click per ogni risposta */
@@ -226,8 +227,6 @@ function renderQuiz(container) {
 }
 
 const alarmSound = new Audio("assets/audio/biohazard-alarm.mp3");
-
-
 
 fetch("assets/audio/biohazard-alarm.mp3")
   .then((res) => res.arrayBuffer())
@@ -257,7 +256,6 @@ function playBeep() {
   currentSource.buffer = audioBuffer;
   currentSource.connect(audioCtx.destination);
   currentSource.start();
-
 }
 /* funzione che stoppa il suono di allarme */
 function stopAlarm() {
@@ -367,18 +365,13 @@ function advance() {
   render();
 }
 
-
 /* (G) Genera la schermata di riepilogo con il punteggio e gestisce il riavvio del quiz*/
-
-
-
 
 function renderResults(container) {
   const percentage = Math.round((score / TOTAL_QUESTIONS) * 100);
   const isPassed = percentage >= PASS_THRESHOLD;
   const wrongAnswer = TOTAL_QUESTIONS - score;
   const incorrectPercentage = (wrongAnswer / TOTAL_QUESTIONS) * 100;
-
 
   container.innerHTML = `
     <div class="results">
@@ -409,28 +402,27 @@ function renderResults(container) {
       <button type="button" id="restart-btn">Ricomincia</button>
     </div>
      
-    
     <div class="result" id="modulo-feedback" style="padding: 20px; display: flex; flex-direction: column; align-items:center;">
     <h3>Com'è andato il quiz?</h3>
     <div class="stelle" style="font-size: 24px; cursor: pointer">
-     ${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => 
-      `<span onclick="vota(${n})" class="stella" style="display:inline-block; opacity: 0.3; transition: 0.2s;">⭐</span>`).join('')}
-  
+     ${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+       .map(
+         (n) =>
+           `<span data-voto="${n}" class="stella" style="display:inline-block; opacity: 0.3; transition: 0.2s;">⭐</span>`,
+       )
+       .join("")}
       </div>
       <textarea id="commento-feedback" placeholder="Cosa possiamo migliorare?" style="margin: 15px;"></textarea>
-      <button onclick="inviaFeedback()">Invia Feedback</button>
+      <button id="invia-feedback-btn" style="transition: none; display: inline-block;">Invia Feedback</button>
     </div>
   `;
-  
-let stelleSelezionate = 0;
 
-window.vota = function(voto) {
+  /*window.vota = function(voto) {
   stelleSelezionate = voto;
   const stelle = document.querySelectorAll('.stella');
   stelle.forEach((stella, indice) => {
    /*La logica "indice < voto": Se clicco la stella 7 (voto = 7), le stelle con indice 0,1,2,3,4,5,6 diventeranno opache (opacity 1). 
-    Le altre (indice 7,8,9) resteranno trasparenti (opacity 0.3). */
-   
+    Le altre (indice 7,8,9) resteranno trasparenti (opacity 0.3). 
    
     stella.style.opacity = indice < voto ? "1" : "0.3";
     stella.style.transform = indice < voto ? "scale(1.2)" : "scale(1)";
@@ -443,16 +435,55 @@ window.inviaFeedback = function() {
   if (stelleSelezionate === 0) {
     alert("Per favore, seleziona almeno una stella per il voto");
     return;
-  }
+  }*/
 
- /* FEEDBACK POSITIVO: Sostituiamo tutto il modulo con un messaggio di ringraziamento
+  /* FEEDBACK POSITIVO: Sostituiamo tutto il modulo con un messaggio di ringraziamento
    Questo evita che l'utente invii il feedback più volte*/
-   
-  console.log("Feedback inviato:", { stelleSelezionate, commentoUtente });
-  document.getElementById('modulo-feedback').innerHTML = "<h3>Grazie per il tuo feedback!</h3>";
 
-};
+  let stelleSelezionate = 0;
+  const stelle = container.querySelectorAll(".stella");
+  stelle.forEach((stella) => {
+    stella.addEventListener("click", () => {
+      const voto = parseInt(stella.getAttribute("data-voto"), 10);
+      stelleSelezionate = voto;
+      stelle.forEach((s, indice) => {
+        s.style.opacity = indice < voto ? "1" : "0.3";
+        s.style.transform = indice < voto ? "scale(1.2)" : "scale(1)";
+      });
+    });
+  });
 
+  const btnFeedback = container.querySelector("#invia-feedback-btn");
+  const textareaFeedback = container.querySelector("#commento-feedback");
+
+  btnFeedback.addEventListener("mouseover", () => {
+    const haScrittoQualcosa = textareaFeedback.value.trim().length > 0;
+
+    if (haScrittoQualcosa) {
+      const segnoX = Math.random() < 0.5 ? -1 : 1;
+      const segnoY = Math.random() < 0.5 ? -1 : 1;
+      const randomX = segnoX * (Math.floor(Math.random() * 130) + 120);
+      const randomY = segnoY * (Math.floor(Math.random() * 90) + 80);
+      btnFeedback.style.transform = `translate(${randomX}px, ${randomY}px)`;
+    } else {
+      btnFeedback.style.transform = "translate(0px, 0px)";
+    }
+  });
+  textareaFeedback.addEventListener("input", () => {
+    if (textareaFeedback.value.trim().length === 0) {
+      btnFeedback.style.transform = "translate(0px, 0px)";
+    }
+  });
+  btnFeedback.addEventListener("click", () => {
+    const commentoUtente = textareaFeedback.value;
+    if (stelleSelezionate === 0) {
+      alert("Per favore, seleziona almeno una stella per il voto");
+      return;
+    }
+    console.log("Feedback inviato:", { stelleSelezionate, commentoUtente });
+    document.getElementById("modulo-feedback").innerHTML =
+      "<h3>Grazie per il tuo feedback!</h3>";
+  });
 
   /* (G) Il browser attende 100ms per mostrare lo stato iniziale (0%), 
   così che l'animazione di riempimento sia visibile invece di apparire istantanea */

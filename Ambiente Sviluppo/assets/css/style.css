@@ -79,6 +79,8 @@ body {
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
   position: relative;
   z-index: 10;
+  
+
 }
 
 .welcome {
@@ -176,6 +178,7 @@ button {
   border-radius: 16px;
   max-width: 720px;
   width: 100%;
+
 }
 
 .question-counter {
@@ -398,4 +401,21 @@ button {
 
 .numeriBarra {
   font-weight: bold;
+}
+
+
+.quiz-fade {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.quiz-fade.hidden {
+  opacity: 0;
+  transform: translateX(-30px); /* Esce verso sinistra */
+}
+
+.quiz-fade.enter {
+  opacity: 0;
+  transform: translateX(30px); /* Parte da destra per entrare */
 }

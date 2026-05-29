@@ -15,6 +15,7 @@ Progetto JS di gruppo basato su una pagina interattiva. Sviluppato utilizzando l
       - [🙀 Esempi](#-esempi)
   - [📸 Anteprima](#-anteprima)
   - [](#)
+  - [](#-1)
   - [🔛Avvio dell' applicazione,](#avvio-dell-applicazione)
   - [📃Sitografia e fonti](#sitografia-e-fonti)
   - [🧑‍💻Autori](#autori)
@@ -125,6 +126,7 @@ function startTimer() {
 - **Quiz Page**
   ------------------
   ![Quiz Page](./Ambiente%20Produzione/assets/img/image-1.png)
+  ------------------
 - **Results Page**
   ------------------
  ![Results Page](./Ambiente%20Produzione/assets/img/image-2.png)

@@ -1,19 +1,3 @@
-/*
-  REGOLE
-  - Codice in JavaScript moderno: solo const/let, mai var.
-  - DOM: usa querySelector / querySelectorAll.
-  - Eventi: usa addEventListener (mai onclick inline nell'HTML).
-  - Pattern: stato → render → eventi.
-*/
-
-/*
-  Array di domande.
-  Ogni question è un object con:
-   - question: testo della domanda
-   - correct_answer: la risposta corretta (string)
-   - incorrect_answers: array di risposte sbagliate (string[])
-*/
-
 const SEGNACORRETTI_COUNT = 100; //Quanti segni generare
 const backgroundContainer = document.getElementById("container"); //Contenitore segni
 
@@ -32,7 +16,7 @@ if (backgroundContainer) {
   }
 }
 const QUESTIONS = [
-  // --- 10 Domande Originali ---
+
   {
     question: "Cliccare su 'Accetto i termini' senza leggerli è la mia firma su un patto col diavolo digitale in cambio di comodità.",
     correct_answer: "Vero",
@@ -181,16 +165,6 @@ let shuffledQuestions = [];
 let audioCtx = null;
 let audioBuffer = null;
 
-/* SCRIVI QUI LE TUE FUNZIONI:
-   - render() che chiama renderWelcome / renderQuiz / renderResults in base a currentScreen
-   - renderWelcome() per la schermata iniziale con button Inizia
-   - renderQuiz() per la domanda corrente con i button risposta + counter + timer
-   - renderResults() per la schermata finale con percentuale + barre + verdetto
-   - startTimer() / stopTimer() per il countdown
-   - handleAnswer(button, answer) per il click su una risposta
-   - handleTimeUp() per il tempo scaduto
-   - advance() per andare alla domanda successiva o ai risultati
-*/
 function render() {
   const app = document.getElementById("app");
   switch (currentScreen) {
@@ -487,28 +461,6 @@ function renderResults(container) {
     </div>
   `;
 
-  /*window.vota = function(voto) {
-  stelleSelezionate = voto;
-  const stelle = document.querySelectorAll('.stella');
-  stelle.forEach((stella, indice) => {
-   /*La logica "indice < voto": Se clicco la stella 7 (voto = 7), le stelle con indice 0,1,2,3,4,5,6 diventeranno opache (opacity 1). 
-    Le altre (indice 7,8,9) resteranno trasparenti (opacity 0.3). 
-   
-    stella.style.opacity = indice < voto ? "1" : "0.3";
-    stella.style.transform = indice < voto ? "scale(1.2)" : "scale(1)";
-  });
-};
-
-
-window.inviaFeedback = function() {
-  const commentoUtente = document.getElementById('commento-feedback').value;
-  if (stelleSelezionate === 0) {
-    alert("Per favore, seleziona almeno una stella per il voto");
-    return;
-  }*/
-
-  /* FEEDBACK POSITIVO: Sostituiamo tutto il modulo con un messaggio di ringraziamento
-   Questo evita che l'utente invii il feedback più volte*/
 
   let stelleSelezionate = 0;
   const stelle = container.querySelectorAll(".stella");

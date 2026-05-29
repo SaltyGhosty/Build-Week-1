@@ -498,7 +498,11 @@ function renderResults(container) {
     document.getElementById("modulo-feedback").innerHTML = "<h3>Grazie per il tuo feedback!</h3>";
   });
 
-  document.getElementById("restart-btn").addEventListener("click", startQuiz);
+  document.getElementById("restart-btn").addEventListener("click", () => {
+    currentScreen = "welcome";
+    render();
+  });
+
 
   setTimeout(() => {
     document.getElementById("bar-c").style.width = percentage + "%";

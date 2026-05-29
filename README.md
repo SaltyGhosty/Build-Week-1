@@ -10,16 +10,13 @@ Progetto JS di gruppo basato su una pagina interattiva. Sviluppato utilizzando l
 >>>>>>> 6bc09c76da48a08e732222aa55ee6dfcf1bdb80a
 - [🧠❓💯Quiz App](#quiz-app)
     - [📒Indice](#indice)
+- [\<\<\<\<\<\<\< HEAD](#-head)
   - [🎯Cosa fa l' applicazione?](#cosa-fa-l-applicazione)
       - [L'applicazione simula e gestisce un flusso di domande a risposta multipla.](#lapplicazione-simula-e-gestisce-un-flusso-di-domande-a-risposta-multipla)
     - [Funzionalità principali:](#funzionalità-principali)
   - [⚙️Come funziona?](#️come-funziona)
   - [💻Tecnologie utilizzate...](#tecnologie-utilizzate)
       - [🙀 Esempi](#-esempi)
-<<<<<<< HEAD
-  - [🔛Avvio dell' applicazione](#avvio-dell-applicazione)
-  - [📃Sitografia e fonti](#sitografia-e-fonti)
-=======
   - [🔛Avvio dell' applicazione,](#avvio-dell-applicazione)
   - [📃Sitografia e fonti](#sitografia-e-fonti)
   - [🧑‍💻Autori](#autori)
@@ -127,8 +124,6 @@ function startTimer() {
 3. *Avviare il file sempre in live via protocollo HTTPS, poichè aprire il file in locale può generare malfunzionamenti.*
 
 ## 📃[Sitografia e fonti](#indice)
-<<<<<<< HEAD
-=======
 1. *Scrittura di MARKDOWN :* https://www.markdownlang.com/it/advanced/security.html.
 2. *Gestione di GitHub :* https://www.atlassian.com/it/git/tutorials/using-branches/git-merge.
 3. *Animazioni :* https://stackoverflow.com/questions.
@@ -142,4 +137,3 @@ function startTimer() {
 -  **Membro : Luciano Labozzetta** https://github.com/SaltyGhosty.
 -  **Membro : Giuliana Petricore** https://github.com/Giuliaxin.
 -  **Membro : Cristian Jorge** https://github.com/CristianNunezJorge.
->>>>>>> 6bc09c76da48a08e732222aa55ee6dfcf1bdb80a

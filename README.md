@@ -122,8 +122,8 @@ function startTimer() {
   ------------------
   ![Welcome Page](./Ambiente%20Produzione/assets/img/image.png)
   ------------------
+- **Quiz Page**
   ![Quiz Page](./Ambiente%20Produzione/assets/img/image-1.png)
-
 - **Results Page**
   ------------------
  ![Results Page](./Ambiente%20Produzione/assets/img/image-2.png)

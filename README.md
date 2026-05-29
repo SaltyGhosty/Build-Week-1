@@ -119,7 +119,7 @@ function startTimer() {
 
 - **Welcome Page**
   ------------------
-  ![alt text](/assets/img/image.png)
+  ![alt text](assets/img/image.png)
 - **Quiz Page**
   ------------------
   ![alt text](image-1.png)

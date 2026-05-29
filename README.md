@@ -4,10 +4,16 @@ Progetto JS di gruppo basato su una pagina interattiva. Sviluppato utilizzando l
 
 ### 📒Indice
 
-* [Cosa fa l' applicazione](#cosa-fa-l-applicazione)
-* [Come funziona](#️come-funziona)
-* [Tecnologia utilizzate](#tecnologie-utilizzate)
-* [Come avviare il progetto](#avvio-dell-applicazione)
+- [🧠❓💯Quiz App](#quiz-app)
+    - [📒Indice](#indice)
+  - [🎯Cosa fa l' applicazione?](#cosa-fa-l-applicazione)
+      - [L'applicazione simula e gestisce un flusso di domande a risposta multipla.](#lapplicazione-simula-e-gestisce-un-flusso-di-domande-a-risposta-multipla)
+    - [Funzionalità principali:](#funzionalità-principali)
+  - [⚙️Come funziona?](#️come-funziona)
+  - [💻Tecnologie utilizzate...](#tecnologie-utilizzate)
+      - [🙀 Esempi](#-esempi)
+  - [🔛Avvio dell' applicazione](#avvio-dell-applicazione)
+  - [📃Sitografia e fonti](#sitografia-e-fonti)
 
 ## 🎯[Cosa fa l' applicazione?](#indice)
 
@@ -110,4 +116,6 @@ function startTimer() {
 
 1. *Clonare o scaricare i file del progetto sul proprio computer.*
 2. *Controllare che i file rimangano intatti  e collegati correttamente tra loro.*
-3. *Aprire il file **index.html** direttamenete in qualsiasi browser.*
+3. *Avviare il file sempre in live via protocollo HTTPS, poichè aprire il file in locale può generare malfunzionamenti.*
+
+## 📃[Sitografia e fonti](#indice)

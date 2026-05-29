@@ -484,7 +484,7 @@ function renderResults(container) {
           )
           .join("")}
       </div>
-      <textarea id="commento-feedback" placeholder="Cosa possiamo migliorare?" style="text-align: center; border-radius: 10px; font-style: normal; font-size: 20px; margin: 15px; max-width: 100%; resize: none; width: 320px; height: 100px;"></textarea>
+      <textarea id="commento-feedback" placeholder="Cosa possiamo migliorare?" style="text-align: center; border-radius: 12px; font-style: normal; font-size: 20px; margin: 15px; max-width: 100%; resize: none; width: 320px; height: 100px;"></textarea>
       <button id="invia-feedback-btn" style="transition: none; display: inline-block;">Invia Feedback</button>
     </div>
   `;

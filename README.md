@@ -4,15 +4,22 @@ Progetto JS di gruppo basato su una pagina interattiva. Sviluppato utilizzando l
 
 ### 📒Indice
 
-* [Cosa fa l' applicazione](#cosa-fa-l-applicazione)
-* [Come funziona](#️come-funziona)
-* [Tecnologia utilizzate](#tecnologie-utilizzate)
-* [Come avviare il progetto](#avvio-dell-applicazione)
+
+- [🧠❓💯Quiz App](#quiz-app)
+    - [📒Indice](#indice)
+  - [🎯Cosa fa l' applicazione?](#cosa-fa-l-applicazione)
+      - [L'applicazione simula e gestisce un flusso di domande a risposta multipla.](#lapplicazione-simula-e-gestisce-un-flusso-di-domande-a-risposta-multipla)
+    - [Funzionalità principali:](#funzionalità-principali)
+  - [⚙️Come funziona?](#️come-funziona)
+  - [💻Tecnologie utilizzate...](#tecnologie-utilizzate)
+      - [🙀 Esempi](#-esempi)
+  - [🔛Avvio dell' applicazione,](#avvio-dell-applicazione)
+  - [📃Sitografia e fonti](#sitografia-e-fonti)
+  - [🧑‍💻Autori](#autori)
 
 ## 🎯[Cosa fa l' applicazione?](#indice)
 
-#### L'applicazione simula e gestisce un flusso di domande a risposta multipla.
-
+#### [L'applicazione simula e gestisce un flusso di domande a risposta multipla.](#indice)
 ### Funzionalità principali:
  
   **Generazione Dinamica:** 
@@ -49,7 +56,7 @@ Il codice è strutturato seguendo il pattern **STATO** --> **RENDER** --> **EVEN
 - *CSS3 Avanzato :* Layout gestisti con **FLEXBOX** e **CSS Grid**. Uso di *@keyframes*, *@mousehover* etc...
 - *JavaScript (Es6)*
   
-#### 🙀 Esempi
+#### 🙀 [Esempi](#indice)
 
   - Animazion segno di caduta del segno di domanda
 ``` 
@@ -106,8 +113,22 @@ function startTimer() {
     ); }
 ```
 -----
-## 🔛[Avvio dell' applicazione](#indice)
-
+## 🔛[Avvio dell' applicazione](#indice),
 1. *Clonare o scaricare i file del progetto sul proprio computer.*
 2. *Controllare che i file rimangano intatti  e collegati correttamente tra loro.*
-3. *Aprire il file **index.html** direttamenete in qualsiasi browser.*
+3. *Avviare il file sempre in live via protocollo HTTPS, poichè aprire il file in locale può generare malfunzionamenti.*
+
+## 📃[Sitografia e fonti](#indice)
+1. *Scrittura di MARKDOWN :* https://www.markdownlang.com/it/advanced/security.html.
+2. *Gestione di GitHub :* https://www.atlassian.com/it/git/tutorials/using-branches/git-merge.
+3. *Animazioni :* https://stackoverflow.com/questions.
+4. *Struttura del flusso :* https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks.
+5. *Audio :* https://pixabay.com/sound-effects.
+6. *GIF :* https://media4.giphy.com/.
+7. *FavIcon :* https://www.flaticon.com/.
+   
+## 🧑‍💻[Autori](#indice)
+- **Leader : Lorenzo Melis** https://github.com/JusTMeth25.
+-  **Membro : Luciano Labozzetta** https://github.com/SaltyGhosty.
+-  **Membro : Giuliana Petricore** https://github.com/Giuliaxin.
+-  **Membro : Cristian Jorge** https://github.com/CristianNunezJorge.

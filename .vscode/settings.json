@@ -3,5 +3,6 @@
     "liveshare.allowGuestDebugControl": true,
     "liveshare.allowGuestTaskControl": true,
     "liveshare.alwaysFollowHost": true,
-    "liveshare.diagnosticMode": false
+    "liveshare.diagnosticMode": false,
+    "markdown.validate.enabled": false
 }

@@ -13,6 +13,7 @@ Progetto JS di gruppo basato su una pagina interattiva. Sviluppato utilizzando l
   - [⚙️Come funziona?](#️come-funziona)
   - [💻Tecnologie utilizzate...](#tecnologie-utilizzate)
       - [🙀 Esempi](#-esempi)
+  - [📸 Anteprima](#-anteprima)
   - [🔛Avvio dell' applicazione,](#avvio-dell-applicazione)
   - [📃Sitografia e fonti](#sitografia-e-fonti)
   - [🧑‍💻Autori](#autori)
@@ -112,6 +113,19 @@ function startTimer() {
       timerId,
     ); }
 ```
+
+## 📸 [Anteprima](#indice)
+
+- **Welcome Page**
+  ------------------
+  ![alt text](image.png)
+- **Quiz Page**
+  ------------------
+  ![alt text](image-1.png)
+- **Results Page**
+  ------------------
+  ![alt text](image-2.png)
+
 -----
 ## 🔛[Avvio dell' applicazione](#indice),
 1. *Clonare o scaricare i file del progetto sul proprio computer.*

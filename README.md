@@ -4,19 +4,24 @@ Progetto JS di gruppo basato su una pagina interattiva. Sviluppato utilizzando l
 
 ### 📒Indice
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 6bc09c76da48a08e732222aa55ee6dfcf1bdb80a
 - [🧠❓💯Quiz App](#quiz-app)
     - [📒Indice](#indice)
+- [\<\<\<\<\<\<\< HEAD](#-head)
   - [🎯Cosa fa l' applicazione?](#cosa-fa-l-applicazione)
       - [L'applicazione simula e gestisce un flusso di domande a risposta multipla.](#lapplicazione-simula-e-gestisce-un-flusso-di-domande-a-risposta-multipla)
     - [Funzionalità principali:](#funzionalità-principali)
   - [⚙️Come funziona?](#️come-funziona)
   - [💻Tecnologie utilizzate...](#tecnologie-utilizzate)
       - [🙀 Esempi](#-esempi)
+  - [📸 Anteprima](#-anteprima)
   - [🔛Avvio dell' applicazione,](#avvio-dell-applicazione)
   - [📃Sitografia e fonti](#sitografia-e-fonti)
   - [🧑‍💻Autori](#autori)
->>>>>>> 6bc09c76da48a08e732222aa55ee6dfcf1bdb80a
+
 
 ## 🎯[Cosa fa l' applicazione?](#indice)
 
@@ -113,6 +118,19 @@ function startTimer() {
       timerId,
     ); }
 ```
+
+## 📸 [Anteprima](#indice)
+
+- **Welcome Page**
+  ------------------
+  ![alt text](image.png)
+- **Quiz Page**
+  ------------------
+  ![alt text](image-1.png)
+- **Results Page**
+  ------------------
+  ![alt text](image-2.png)
+
 -----
 ## 🔛[Avvio dell' applicazione](#indice),
 1. *Clonare o scaricare i file del progetto sul proprio computer.*

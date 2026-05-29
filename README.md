@@ -122,10 +122,11 @@ function startTimer() {
   ------------------
   ![Welcome Page](./Ambiente%20Produzione/assets/img/image.png)
   ------------------
-  ![alt text](image-1.png)
+  ![Quiz Page](./Ambiente%20Produzione/assets/img/image-1.png)
+
 - **Results Page**
   ------------------
-  ![alt text](image-2.png)
+ ![Results Page](./Ambiente%20Produzione/assets/img/image-2.png)
 
 -----
 ## 🔛[Avvio dell' applicazione](#indice),

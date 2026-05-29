@@ -120,7 +120,7 @@ function startTimer() {
 
 - **Welcome Page**
   ------------------
-  ![alt text](../Build-Week-1/Ambiente%20Produzione/assets/img/image.png)
+  ![Welcome Page](./Ambiente%20Produzione/assets/img/image.png)
   ------------------
   ![alt text](image-1.png)
 - **Results Page**

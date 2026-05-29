@@ -20,18 +20,22 @@ if (backgroundContainer) {
 /* 2.DOMANDE DEL QUIZ */
 const QUESTIONS = [
   {
-    question: "Cliccare su 'Accetto i termini' senza leggerli è la mia firma su un patto col diavolo digitale in cambio di comodità.",
+    question:
+      "Cliccare su 'Accetto i termini' senza leggerli è la mia firma su un patto col diavolo digitale in cambio di comodità.",
     correct_answer: "Vero",
     incorrect_answers: ["Falso"],
   },
   {
-    question: "Il sistema che mi obbliga a cambiare password ogni mese lo fa esclusivamente perché ha a cuore la mia salute mentale e il mio benessere interiore.",
+    question:
+      "Il sistema che mi obbliga a cambiare password ogni mese lo fa esclusivamente perché ha a cuore la mia salute mentale e il mio benessere interiore.",
     correct_answer: "Falso",
     incorrect_answers: ["Vero"],
   },
   {
-    question: "Il sito ti avvisa: 'La password deve essere diversa dalla precedente'. Qual è la tua strategia di sopravvivenza?",
-    correct_answer: "Cambio il carattere speciale da ! a ? (la domanda riflette il mio stato d'animo).",
+    question:
+      "Il sito ti avvisa: 'La password deve essere diversa dalla precedente'. Qual è la tua strategia di sopravvivenza?",
+    correct_answer:
+      "Cambio il carattere speciale da ! a ? (la domanda riflette il mio stato d'animo).",
     incorrect_answers: [
       "Aggiungo un '1' alla fine della precedente.",
       "Inizio a guardare oggetti nella stanza in cerca di ispirazione filosofica.",
@@ -39,7 +43,8 @@ const QUESTIONS = [
     ],
   },
   {
-    question: "Hai cliccato su 'Password dimenticata'. Qual è lo stadio emotivo predominante?",
+    question:
+      "Hai cliccato su 'Password dimenticata'. Qual è lo stadio emotivo predominante?",
     correct_answer: "Negazione ('L'avevo scritta da qualche parte, lo giuro!')",
     incorrect_answers: [
       "Rabbia ('Ma come, l'ho creata ieri!')",
@@ -48,8 +53,10 @@ const QUESTIONS = [
     ],
   },
   {
-    question: "Domanda di sicurezza: 'Nome del tuo primo animale domestico'. Perché questa domanda è un attacco alla tua privacy?",
-    correct_answer: "Perché il mio criceto non aveva un nome, era solo 'Criceto', e questo mi fa sentire poco originale.",
+    question:
+      "Domanda di sicurezza: 'Nome del tuo primo animale domestico'. Perché questa domanda è un attacco alla tua privacy?",
+    correct_answer:
+      "Perché il mio criceto non aveva un nome, era solo 'Criceto', e questo mi fa sentire poco originale.",
     incorrect_answers: [
       "Perché rivela dettagli intimi della mia infanzia che non voglio condividere con un server.",
       "Perché la risposta è troppo ovvia per gli hacker e troppo complessa per il mio Io attuale.",
@@ -57,8 +64,10 @@ const QUESTIONS = [
     ],
   },
   {
-    question: "L'autenticazione a due fattori ti chiede un codice inviato sul telefono. Il telefono è in un'altra stanza. Cosa fai?",
-    correct_answer: "Cerchi di indovinare il codice (probabilità di successo: 0,0001%).",
+    question:
+      "L'autenticazione a due fattori ti chiede un codice inviato sul telefono. Il telefono è in un'altra stanza. Cosa fai?",
+    correct_answer:
+      "Cerchi di indovinare il codice (probabilità di successo: 0,0001%).",
     incorrect_answers: [
       "Ti alzi e lo prendi, sentendoti un atleta impegnato in una maratona.",
       "Rimani seduto fissando il vuoto, rassegnato alla sconfitta digitale.",
@@ -66,8 +75,10 @@ const QUESTIONS = [
     ],
   },
   {
-    question: "Usi la stessa password per il conto in banca e per l'app delle ricette. Qual è il rischio psicologico principale?",
-    correct_answer: "Nessuno, tanto nessuno hackererebbe un conto in banca vuoto.",
+    question:
+      "Usi la stessa password per il conto in banca e per l'app delle ricette. Qual è il rischio psicologico principale?",
+    correct_answer:
+      "Nessuno, tanto nessuno hackererebbe un conto in banca vuoto.",
     incorrect_answers: [
       "Che gli hacker rubino la mia segreta ricetta del tiramisù.",
       "Che il sistema bancario mi giudichi per le mie abitudini alimentari compulsive.",
@@ -84,13 +95,16 @@ const QUESTIONS = [
     ],
   },
   {
-    question: "Il test CAPTCHA che mi chiede di identificare i semafori è stato progettato per premiare la mia intelligenza superiore rispetto alle macchine.",
+    question:
+      "Il test CAPTCHA che mi chiede di identificare i semafori è stato progettato per premiare la mia intelligenza superiore rispetto alle macchine.",
     correct_answer: "Falso",
     incorrect_answers: ["Vero"],
   },
   {
-    question: "Qual è la definizione di 'Password Perfetta' secondo la psicologia dell'Erosione dell'Io?",
-    correct_answer: "Non esiste, l'unica password perfetta è quella che non serve a nulla perché abbiamo smesso di accedere.",
+    question:
+      "Qual è la definizione di 'Password Perfetta' secondo la psicologia dell'Erosione dell'Io?",
+    correct_answer:
+      "Non esiste, l'unica password perfetta è quella che non serve a nulla perché abbiamo smesso di accedere.",
     incorrect_answers: [
       "Una che contiene il nome di un ex, perché è indelebile.",
       "Una che non ricordi, ma che il computer ricorda per te.",
@@ -98,55 +112,98 @@ const QUESTIONS = [
     ],
   },
   {
-    question: "Ricevere una notifica push da un'app di utilità che non apro dal 2019 è la prova definitiva che la tecnologia ha sviluppato sentimenti di abbandono nei miei confronti.",
+    question:
+      "Ricevere una notifica push da un'app di utilità che non apro dal 2019 è la prova definitiva che la tecnologia ha sviluppato sentimenti di abbandono nei miei confronti.",
     correct_answer: "Falso",
     incorrect_answers: ["Vero"],
   },
   {
-    question: "Il tasto 'Annulla iscrizione' nelle newsletter è spesso nascosto in caratteri microscopici perché:",
-    correct_answer: "È una prova di forza di volontà: se non mi impegno a cercarlo, merito di ricevere mail per l'eternità.",
-    incorrect_answers: ["Gli sviluppatori hanno un sadico senso dell'umorismo.", "È un test di vista per verificare se sono ancora un utente in salute.", "L'azienda crede sinceramente che io voglia ricevere ancora quella promozione su quel corso di trading online."],
+    question:
+      "Il tasto 'Annulla iscrizione' nelle newsletter è spesso nascosto in caratteri microscopici perché:",
+    correct_answer:
+      "È una prova di forza di volontà: se non mi impegno a cercarlo, merito di ricevere mail per l'eternità.",
+    incorrect_answers: [
+      "Gli sviluppatori hanno un sadico senso dell'umorismo.",
+      "È un test di vista per verificare se sono ancora un utente in salute.",
+      "L'azienda crede sinceramente che io voglia ricevere ancora quella promozione su quel corso di trading online.",
+    ],
   },
   {
-    question: "Cosa succede davvero quando clicchi su 'Segnala come spam' in una mail?",
-    correct_answer: "In realtà non succede nulla, è solo un placebo tecnologico per placare la tua ansia di controllo.",
-    incorrect_answers: ["Il filtro antispam aggiunge un altro tassello al mosaico della tua solitudine digitale.", "La mail finisce in un limbo dove attende, paziente, il giorno del giudizio universale.", "La mail viene stampata fisicamente in una stanza segreta per umiliare chi l'ha scritta."],
+    question:
+      "Cosa succede davvero quando clicchi su 'Segnala come spam' in una mail?",
+    correct_answer:
+      "In realtà non succede nulla, è solo un placebo tecnologico per placare la tua ansia di controllo.",
+    incorrect_answers: [
+      "Il filtro antispam aggiunge un altro tassello al mosaico della tua solitudine digitale.",
+      "La mail finisce in un limbo dove attende, paziente, il giorno del giudizio universale.",
+      "La mail viene stampata fisicamente in una stanza segreta per umiliare chi l'ha scritta.",
+    ],
   },
   {
     question: "La 'Modalità Incognito' del browser serve principalmente a:",
-    correct_answer: "Illudermi che il mio provider internet non sappia esattamente cosa sto facendo.",
-    incorrect_answers: ["Nascondere i regali che sto comprando per i familiari.", "Farmi sentire un agente segreto nel cyberspazio, anche se sto solo cercando il meteo.", "Proteggere il mio 'Io Imbarazzante' dal giudizio severo del mio storico ricerche."],
+    correct_answer:
+      "Illudermi che il mio provider internet non sappia esattamente cosa sto facendo.",
+    incorrect_answers: [
+      "Nascondere i regali che sto comprando per i familiari.",
+      "Farmi sentire un agente segreto nel cyberspazio, anche se sto solo cercando il meteo.",
+      "Proteggere il mio 'Io Imbarazzante' dal giudizio severo del mio storico ricerche.",
+    ],
   },
   {
-    question: "Ricevi una richiesta di 'Aggiornamento Software' che dura 45 minuti. Cosa fai?",
-    correct_answer: "Inizi a pulire casa sperando che il karma ti ricompensi con un riavvio rapido.",
-    incorrect_answers: ["Fissi la barra di avanzamento sperando che il tempo scorra più velocemente.", "Ti convinci che il computer stia vivendo una metamorfosi spirituale.", "Ti rassegni a una pausa caffè che durerà tutto il pomeriggio."],
+    question:
+      "Ricevi una richiesta di 'Aggiornamento Software' che dura 45 minuti. Cosa fai?",
+    correct_answer:
+      "Inizi a pulire casa sperando che il karma ti ricompensi con un riavvio rapido.",
+    incorrect_answers: [
+      "Fissi la barra di avanzamento sperando che il tempo scorra più velocemente.",
+      "Ti convinci che il computer stia vivendo una metamorfosi spirituale.",
+      "Ti rassegni a una pausa caffè che durerà tutto il pomeriggio.",
+    ],
   },
   {
-    question: "Il cloud è tecnicamente 'il computer di qualcun altro'. Perché la consapevolezza di ciò è angosciante?",
-    correct_answer: "Perché ho paura che 'qualcun altro' veda le mie foto adolescenziali caricate per errore nel 2008.",
-    incorrect_answers: ["Perché non ho il controllo fisico su dove finiscono i miei file.", "Perché la parola 'cloud' suona troppo eterea per contenere i miei fallimenti digitali.", "Perché se il cloud cade, cade metaforicamente anche la mia identità."],
+    question:
+      "Il cloud è tecnicamente 'il computer di qualcun altro'. Perché la consapevolezza di ciò è angosciante?",
+    correct_answer:
+      "Perché ho paura che 'qualcun altro' veda le mie foto adolescenziali caricate per errore nel 2008.",
+    incorrect_answers: [
+      "Perché non ho il controllo fisico su dove finiscono i miei file.",
+      "Perché la parola 'cloud' suona troppo eterea per contenere i miei fallimenti digitali.",
+      "Perché se il cloud cade, cade metaforicamente anche la mia identità.",
+    ],
   },
   {
-    question: "La batteria al 1% è il momento in cui l'Erosione dell'Io tocca il suo apice. Qual è la tua reazione?",
+    question:
+      "La batteria al 1% è il momento in cui l'Erosione dell'Io tocca il suo apice. Qual è la tua reazione?",
     correct_answer: "La preghiera laica rivolta al dio del caricatore a muro.",
-    incorrect_answers: ["Il panico del naufrago che vede l'ultima scialuppa allontanarsi.", "Una calma zen: sono finalmente disconnesso dal matrix.", "Il tentativo disperato di inviare l'ultimo messaggio importante prima che il buio scenda."],
+    incorrect_answers: [
+      "Il panico del naufrago che vede l'ultima scialuppa allontanarsi.",
+      "Una calma zen: sono finalmente disconnesso dal matrix.",
+      "Il tentativo disperato di inviare l'ultimo messaggio importante prima che il buio scenda.",
+    ],
   },
   {
-    question: "Pensare che coprire la webcam con un adesivo mi protegga dalla sorveglianza globale è l'equivalente digitale di indossare un cappello di carta stagnola per non farsi leggere il pensiero dagli alieni.",
+    question:
+      "Pensare che coprire la webcam con un adesivo mi protegga dalla sorveglianza globale è l'equivalente digitale di indossare un cappello di carta stagnola per non farsi leggere il pensiero dagli alieni.",
     correct_answer: "Vero",
     incorrect_answers: ["Falso"],
   },
   {
-    question: "Il fatto di provare una strana soddisfazione nel vedere la cartella 'Desktop' del mio PC completamente pulita è solo un tentativo disperato di mettere ordine nel caos della mia vita reale.",
+    question:
+      "Il fatto di provare una strana soddisfazione nel vedere la cartella 'Desktop' del mio PC completamente pulita è solo un tentativo disperato di mettere ordine nel caos della mia vita reale.",
     correct_answer: "Vero",
     incorrect_answers: ["Falso"],
   },
   {
-    question: "Hai 47 schede del browser aperte e nessuna intenzione di chiuderle. Cosa provi guardandole?",
-    correct_answer: "È un test di resistenza della mia RAM: vedremo chi cede per primo.",
-    incorrect_answers: ["Sono porte su mondi paralleli che non avrò mai il coraggio di attraversare.", "Sto accumulando conoscenza enciclopedica per il giorno in cui Internet smetterà di funzionare.", "Le tengo aperte per sentirmi meno solo nel vuoto dell'iperconnessione."],
-  }
+    question:
+      "Hai 47 schede del browser aperte e nessuna intenzione di chiuderle. Cosa provi guardandole?",
+    correct_answer:
+      "È un test di resistenza della mia RAM: vedremo chi cede per primo.",
+    incorrect_answers: [
+      "Sono porte su mondi paralleli che non avrò mai il coraggio di attraversare.",
+      "Sto accumulando conoscenza enciclopedica per il giorno in cui Internet smetterà di funzionare.",
+      "Le tengo aperte per sentirmi meno solo nel vuoto dell'iperconnessione.",
+    ],
+  },
 ];
 
 /* 3.IMPOSTAZIONIDEL QUIZ */
@@ -422,7 +479,8 @@ function renderResults(container) {
       <div class="stelle" style="font-size: 24px; cursor: pointer">
         ${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
           .map(
-            (n) => `<span data-voto="${n}" class="stella" style="display:inline-block; opacity: 0.3; transition: 0.2s;">⭐</span>`
+            (n) =>
+              `<span data-voto="${n}" class="stella" style="display:inline-block; opacity: 0.3; transition: 0.2s;">⭐</span>`,
           )
           .join("")}
       </div>
@@ -436,11 +494,19 @@ function renderResults(container) {
   stelle.forEach((stella) => {
     stella.addEventListener("click", () => {
       const voto = parseInt(stella.getAttribute("data-voto"), 10);
-      stelleSelezionate = voto;
-      stelle.forEach((s, indice) => {
-        s.style.opacity = indice < voto ? "1" : "0.3";
-        s.style.transform = indice < voto ? "scale(1.2)" : "scale(1)";
-      });
+      if (voto === stelleSelezionate) {
+        stelleSelezionate = 0;
+        stelle.forEach((s) => {
+          s.style.opacity = "0.3";
+          s.style.transform = "scale(1)";
+        });
+      } else {
+        stelleSelezionate = voto;
+        stelle.forEach((s, indice) => {
+          s.style.opacity = indice < voto ? "1" : "0.3";
+          s.style.transform = indice < voto ? "scale(1.2)" : "scale(1)";
+        });
+      }
     });
   });
 
@@ -459,7 +525,8 @@ function renderResults(container) {
     stelle.forEach((s, indice) => {
       if (stelleSelezionate > 0) {
         s.style.opacity = indice < stelleSelezionate ? "1" : "0.3";
-        s.style.transform = indice < stelleSelezionate ? "scale(1.2)" : "scale(1)";
+        s.style.transform =
+          indice < stelleSelezionate ? "scale(1.2)" : "scale(1)";
       } else {
         s.style.opacity = "0.3";
         s.style.transform = "scale(1)";
@@ -495,14 +562,14 @@ function renderResults(container) {
       return;
     }
     console.log("Feedback inviato:", { stelleSelezionate, commentoUtente });
-    document.getElementById("modulo-feedback").innerHTML = "<h3>Grazie per il tuo feedback!</h3>";
+    document.getElementById("modulo-feedback").innerHTML =
+      "<h3>Grazie per il tuo feedback!</h3>";
   });
 
   document.getElementById("restart-btn").addEventListener("click", () => {
     currentScreen = "welcome";
     render();
   });
-
 
   setTimeout(() => {
     document.getElementById("bar-c").style.width = percentage + "%";

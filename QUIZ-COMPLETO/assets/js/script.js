@@ -474,8 +474,8 @@ function renderResults(container) {
       <button type="button" id="restart-btn">Ricomincia</button>
     </div>
       
-    <div class="result" id="modulo-feedback" style="padding: 13.5px; display: flex; flex-direction: column; align-items:center;">
-      <h3>Com'è andato il quiz?</h3>
+    <div class="result" id="modulo-feedback" style="background: linear-gradient(51deg, #ca2275 0%, #ab1b7a 21%, #9f187c 50%, #590985 76%, #500786 100%);padding: 13.5px;margin-top:10px; display: flex;flex-direction: column;align-items:center; border-radius: 10px ;">
+      <h3 style="color: white;">Com'è andato il quiz?</h3>
       <div class="stelle" style="font-size: 24px; cursor: pointer">
         ${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
           .map(
@@ -484,7 +484,9 @@ function renderResults(container) {
           )
           .join("")}
       </div>
-      <textarea id="commento-feedback" placeholder="Cosa possiamo migliorare?" style="text-align: center; border-radius: 12px; font-style: normal; font-size: 20px; margin: 15px; max-width: 100%; resize: none; width: 320px; height: 100px;"></textarea>
+      <textarea id="commento-feedback" placeholder="Cosa possiamo migliorare?" style="text-align: center;
+    border-radius: 10px; background-color: beige;
+    font-style: normal; font-size: 20px; margin: 15px; max-width: 100%; resize: none; width: 320px; height: 100px;"></textarea>
       <button id="invia-feedback-btn" style="transition: none; display: inline-block;">Invia Feedback</button>
     </div>
   `;
@@ -563,7 +565,7 @@ function renderResults(container) {
     }
     console.log("Feedback inviato:", { stelleSelezionate, commentoUtente });
     document.getElementById("modulo-feedback").innerHTML =
-      "<h3>Grazie per il tuo feedback!</h3>";
+      "<h3 style=color:white;>Grazie per il tuo feedback!</h3>";
   });
 
   document.getElementById("restart-btn").addEventListener("click", () => {
